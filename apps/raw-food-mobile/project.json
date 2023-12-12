@@ -20,7 +20,7 @@
           "apps/raw-food-mobile/src/favicon.ico",
           "apps/raw-food-mobile/src/assets"
         ],
-        "styles": ["apps/raw-food-mobile/src/styles.scss"],
+        "styles": ["apps/raw-food-mobile/src/global.scss"],
         "scripts": []
       },
       "configurations": {

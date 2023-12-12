@@ -1,0 +1,42 @@
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="title ion-text-center"
+                 size="large">
+        Foodies
+      </ion-title>
+      <ion-label class="ion-text-center sub-title">
+        Your way to happiness
+      </ion-label>
+    </ion-toolbar>
+  </ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let foodItem of foodList">
+    <ion-card-header>
+      <ion-card-title class="label-text">
+        {{ foodItem.label }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list class="description">
+        <ion-item class="description-item"
+                  lines="none">
+          <ion-label class="description-text">
+            {{ foodItem.description }}
+          </ion-label>
+          <ion-button
+            (click)="presentAlertDeleteFood(foodItem.id)">
+            Delete
+          </ion-button>
+          <ion-button (click)="presentFoodDetailsModal(foodItem)"
+                      expand="block">
+            Edit
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button (click)="presentAddFoodModal()"
+              expand="block">
+    Add Food
+  </ion-button>
+</ion-content>
