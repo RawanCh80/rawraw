@@ -14,7 +14,7 @@
         "outputPath": "dist/apps/raw-food-api",
         "main": "apps/raw-food-api/src/main.ts",
         "tsConfig": "apps/raw-food-api/tsconfig.app.json",
-        "assets": ["apps/raw-food-api/src/assets"],
+        "assets": [],
         "webpackConfig": "apps/raw-food-api/webpack.config.js"
       },
       "configurations": {
