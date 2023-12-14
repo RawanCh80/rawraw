@@ -6,6 +6,44 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
+      "raw-food-api-e2e": [
+        {
+          "file": "raw-food-api-e2e/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "raw-food-api-e2e/jest.config.ts",
+          "hash": "11933232825996374869"
+        },
+        {
+          "file": "raw-food-api-e2e/project.json",
+          "hash": "11538720472315232028"
+        },
+        {
+          "file": "raw-food-api-e2e/src/raw-food-api/raw-food-api.spec.ts",
+          "hash": "110394728024017389"
+        },
+        {
+          "file": "raw-food-api-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "raw-food-api-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "raw-food-api-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441"
+        },
+        {
+          "file": "raw-food-api-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "raw-food-api-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
       "raw-food-web": [
         {
           "file": "raw-food-web/.eslintrc.json",
@@ -21,7 +59,7 @@
         },
         {
           "file": "raw-food-web/src/app/app.component.html",
-          "hash": "9526757555934521132"
+          "hash": "10926219532137688934"
         },
         {
           "file": "raw-food-web/src/app/app.component.scss",
@@ -33,31 +71,39 @@
         },
         {
           "file": "raw-food-web/src/app/app.component.ts",
-          "hash": "15063198315439135435"
+          "hash": "3266500119228018640"
         },
         {
           "file": "raw-food-web/src/app/app.config.ts",
           "hash": "10618457967269332155"
         },
         {
+          "file": "raw-food-web/src/app/app.module.ts",
+          "hash": "4700405664547694528"
+        },
+        {
           "file": "raw-food-web/src/app/app.routes.ts",
           "hash": "6185150965714414910"
         },
         {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.html",
+          "file": "raw-food-web/src/app/food-list.page/food-list-routing.module.ts",
+          "hash": "14127782129925496799"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list.module.ts",
+          "hash": "1275997364800547177"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.html",
           "hash": "3954810510406318306"
         },
         {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.scss",
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.scss",
           "hash": "3244421341483603138"
         },
         {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.spec.ts",
-          "hash": "14672968223842767809"
-        },
-        {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.ts",
-          "hash": "17697767276500382068"
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.ts",
+          "hash": "1772250089455153834"
         },
         {
           "file": "raw-food-web/src/app/nx-welcome.component.ts",
@@ -143,7 +189,7 @@
         },
         {
           "file": "raw-food-mobile/src/app/app.component.ts",
-          "hash": "12221052011387848251"
+          "hash": "7749095843608548644"
         },
         {
           "file": "raw-food-mobile/src/app/app.module.ts",
@@ -370,44 +416,6 @@
         {
           "file": "raw-food-api/webpack.config.js",
           "hash": "5708803163266262522"
-        }
-      ],
-      "raw-food-api-e2e": [
-        {
-          "file": "raw-food-api-e2e/.eslintrc.json",
-          "hash": "13800677001662881425"
-        },
-        {
-          "file": "raw-food-api-e2e/jest.config.ts",
-          "hash": "11933232825996374869"
-        },
-        {
-          "file": "raw-food-api-e2e/project.json",
-          "hash": "11538720472315232028"
-        },
-        {
-          "file": "raw-food-api-e2e/src/raw-food-api/raw-food-api.spec.ts",
-          "hash": "110394728024017389"
-        },
-        {
-          "file": "raw-food-api-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "raw-food-api-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "raw-food-api-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441"
-        },
-        {
-          "file": "raw-food-api-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
-        },
-        {
-          "file": "raw-food-api-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
         }
       ]
     },

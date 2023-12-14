@@ -1,10 +1,10 @@
-import { FoodForCreationInterface } from "apps/raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal";
+import { FoodForCreationInterface } from "../interfaces/food-for-creation.interface";
 
 export class FoodForCreationDto {
   label: string;
   description: string;
 
-  constructor(foodForCreationFormValue:FoodForCreationInterface) {
+  constructor(foodForCreationFormValue: FoodForCreationInterface) {
     this.label = foodForCreationFormValue.label;
     this.description = foodForCreationFormValue.description;
   }

@@ -1,4 +1,5 @@
-import { FoodForUpdateInterface } from "apps/raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal";
+import { FoodForUpdateInterface } from "../interfaces/food-for-updated.interface";
+
 
 export class FoodForUpdatedDto{
   label : string;

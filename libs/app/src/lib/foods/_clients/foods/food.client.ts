@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { FoodModel } from "./food.model";
 import { Observable } from "rxjs";
-import { FoodForCreationDto } from "@rawraw/app";
-import { FoodForUpdatedDto } from "@rawraw/app";
+import { FoodForCreationDto } from "../../../../index";
+import { FoodForUpdatedDto } from "../../../../index";
 import { FoodItemModel } from "./food-item.model";
 
 @Injectable({
