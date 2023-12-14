@@ -1,0 +1,224 @@
+{
+  "nodes": {
+    "raw-food-api-e2e": {
+      "name": "raw-food-api-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "raw-food-api-e2e",
+        "name": "raw-food-api-e2e",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "implicitDependencies": [
+          "raw-food-api"
+        ],
+        "projectType": "application",
+        "targets": {
+          "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{e2eProjectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/raw-food-api-e2e/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {},
+            "configurations": {}
+          }
+        },
+        "tags": []
+      }
+    },
+    "raw-food-mobile": {
+      "name": "raw-food-mobile",
+      "type": "app",
+      "data": {
+        "root": "raw-food-mobile",
+        "name": "raw-food-mobile",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "prefix": "rawraw",
+        "sourceRoot": "apps/raw-food-mobile/src",
+        "tags": [],
+        "targets": {
+          "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/apps/raw-food-mobile",
+              "index": "apps/raw-food-mobile/src/index.html",
+              "main": "apps/raw-food-mobile/src/main.ts",
+              "polyfills": [
+                "zone.js"
+              ],
+              "tsConfig": "apps/raw-food-mobile/tsconfig.app.json",
+              "inlineStyleLanguage": "scss",
+              "assets": [
+                "apps/raw-food-mobile/src/favicon.ico",
+                "apps/raw-food-mobile/src/assets"
+              ],
+              "styles": [
+                "apps/raw-food-mobile/src/global.scss"
+              ],
+              "scripts": []
+            },
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "500kb",
+                    "maximumError": "1mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "buildTarget": "raw-food-mobile:build:production"
+              },
+              "development": {
+                "buildTarget": "raw-food-mobile:build:development"
+              }
+            },
+            "defaultConfiguration": "development",
+            "options": {}
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "buildTarget": "raw-food-mobile:build"
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/raw-food-mobile/jest.config.ts"
+            },
+            "configurations": {}
+          }
+        },
+        "implicitDependencies": []
+      }
+    },
+    "raw-food-api": {
+      "name": "raw-food-api",
+      "type": "app",
+      "data": {
+        "root": "raw-food-api",
+        "name": "raw-food-api",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/raw-food-api/src",
+        "projectType": "application",
+        "targets": {
+          "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+              "target": "node",
+              "compiler": "tsc",
+              "outputPath": "dist/apps/raw-food-api",
+              "main": "apps/raw-food-api/src/main.ts",
+              "tsConfig": "apps/raw-food-api/tsconfig.app.json",
+              "assets": [],
+              "webpackConfig": "apps/raw-food-api/webpack.config.js"
+            },
+            "configurations": {
+              "development": {},
+              "production": {}
+            }
+          },
+          "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+              "buildTarget": "raw-food-api:build"
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "raw-food-api:build:development"
+              },
+              "production": {
+                "buildTarget": "raw-food-api:build:production"
+              }
+            }
+          },
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/raw-food-api/jest.config.ts"
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [],
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "raw-food-api-e2e": [
+      {
+        "source": "raw-food-api-e2e",
+        "target": "raw-food-api",
+        "type": "implicit"
+      }
+    ],
+    "raw-food-mobile": [],
+    "raw-food-api": []
+  },
+  "version": "6.0"
+}

@@ -3,8 +3,7 @@ import { AlertController, ModalController, ToastController } from "@ionic/angula
 import { FoodDetailsModal } from "./food-details-modal/food-details.modal";
 import { FoodCreateModal } from "./food-create-modal/food-create.modal";
 import { lastValueFrom, Subscription } from "rxjs";
-import { FoodsService } from "./services/foods.service";
-import { FoodItemBo } from "./bos/food-item.bo";
+import { FoodItemBo, FoodsService } from "@rawraw/app";
 
 @Component({
   templateUrl: 'food-list.page.html',

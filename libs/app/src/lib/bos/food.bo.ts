@@ -1,6 +1,6 @@
-import { FoodModel } from "../../_clients/foods/food.model";
+import { FoodModel } from "@rawraw/app";
 
-export class FoodItemBo {
+export class FoodBo {
   id: string;
   label: string;
   description: string;

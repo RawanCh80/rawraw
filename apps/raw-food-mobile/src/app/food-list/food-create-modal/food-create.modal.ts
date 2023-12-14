@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { ModalController, ToastController } from "@ionic/angular";
-import { FoodsService } from "../services/foods.service";
+import { FoodsService } from "@rawraw/app";
 import { lastValueFrom } from "rxjs";
 
 interface FoodForCreationFormGroupInterface {

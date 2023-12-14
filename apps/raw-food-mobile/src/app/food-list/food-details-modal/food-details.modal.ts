@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, ToastController } from "@ionic/angular";
 import { FormControl, FormGroup } from "@angular/forms";
-import { FoodsService } from "../services/foods.service";
+import { FoodsService } from "@rawraw/app";
 import { lastValueFrom, Subscription } from "rxjs";
-import { FoodBo } from "../bos/food.bo";
+import { FoodBo } from "@rawraw/app";
 
 interface FoodForUpdateFormGroupInterface {
   label: FormControl<string>;
