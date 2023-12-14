@@ -6,122 +6,102 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "raw-food-api": [
+      "raw-food-web": [
         {
-          "file": "raw-food-api/.eslintrc.json",
-          "hash": "13800677001662881425"
+          "file": "raw-food-web/.eslintrc.json",
+          "hash": "5301715727768953387"
         },
         {
-          "file": "raw-food-api/jest.config.ts",
-          "hash": "1516113222066837972"
+          "file": "raw-food-web/jest.config.ts",
+          "hash": "3695358536536221814"
         },
         {
-          "file": "raw-food-api/nest-cli.json",
-          "hash": "789240945379598733"
+          "file": "raw-food-web/project.json",
+          "hash": "1364977150897657703"
         },
         {
-          "file": "raw-food-api/prisma/schema.prisma",
-          "hash": "12424552881584024990"
+          "file": "raw-food-web/src/app/app.component.html",
+          "hash": "9526757555934521132"
         },
         {
-          "file": "raw-food-api/project.json",
-          "hash": "3120367736751368166"
+          "file": "raw-food-web/src/app/app.component.scss",
+          "hash": "3244421341483603138"
         },
         {
-          "file": "raw-food-api/src/app.module.ts",
-          "hash": "7956684730710412510"
+          "file": "raw-food-web/src/app/app.component.spec.ts",
+          "hash": "13888645934648635120"
         },
         {
-          "file": "raw-food-api/src/food/dto/create-food.dto.ts",
-          "hash": "12750471329514303174"
+          "file": "raw-food-web/src/app/app.component.ts",
+          "hash": "15063198315439135435"
         },
         {
-          "file": "raw-food-api/src/food/dto/food-item.dto.ts",
-          "hash": "10676069797212625229"
+          "file": "raw-food-web/src/app/app.config.ts",
+          "hash": "10618457967269332155"
         },
         {
-          "file": "raw-food-api/src/food/dto/update-food.dto.ts",
-          "hash": "17822690902922912189"
+          "file": "raw-food-web/src/app/app.routes.ts",
+          "hash": "6185150965714414910"
         },
         {
-          "file": "raw-food-api/src/food/food.controller.ts",
-          "hash": "9327116749488055229"
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.html",
+          "hash": "3954810510406318306"
         },
         {
-          "file": "raw-food-api/src/food/food.module.ts",
-          "hash": "1690335932049802822"
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.scss",
+          "hash": "3244421341483603138"
         },
         {
-          "file": "raw-food-api/src/food/food.service.ts",
-          "hash": "4629983457093966071"
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.spec.ts",
+          "hash": "14672968223842767809"
         },
         {
-          "file": "raw-food-api/src/food/httpExceptions/food-already-exists-error-exception.ts",
-          "hash": "13087948023814049282"
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.component.ts",
+          "hash": "17697767276500382068"
         },
         {
-          "file": "raw-food-api/src/food/httpExceptions/food-doesnt-exists-error-exception.ts",
-          "hash": "1767371246877528195"
+          "file": "raw-food-web/src/app/nx-welcome.component.ts",
+          "hash": "1157964029242726099"
         },
         {
-          "file": "raw-food-api/src/food/httpExceptions/food-label-already-exists-error-exception.ts",
-          "hash": "14117532247170384746"
+          "file": "raw-food-web/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
         },
         {
-          "file": "raw-food-api/src/food/httpExceptions/http-exception.filter.ts",
-          "hash": "2425797797171282891"
+          "file": "raw-food-web/src/favicon.ico",
+          "hash": "9303420814833116677"
         },
         {
-          "file": "raw-food-api/src/food/repository/dao/food.dao.ts",
-          "hash": "9628890696247036467"
+          "file": "raw-food-web/src/index.html",
+          "hash": "13677363148993380930"
         },
         {
-          "file": "raw-food-api/src/food/repository/db-errors-codes.ts",
-          "hash": "8083104054569745475"
+          "file": "raw-food-web/src/main.ts",
+          "hash": "732663438483983849"
         },
         {
-          "file": "raw-food-api/src/food/repository/entities/food-create.entity.ts",
-          "hash": "14745800839494877709"
+          "file": "raw-food-web/src/styles.scss",
+          "hash": "5195668842064076916"
         },
         {
-          "file": "raw-food-api/src/food/repository/entities/food-update.entity.ts",
-          "hash": "11405615004919340171"
+          "file": "raw-food-web/src/test-setup.ts",
+          "hash": "12935735732682149507"
         },
         {
-          "file": "raw-food-api/src/food/repository/food.repository.ts",
-          "hash": "15914438936483235832"
+          "file": "raw-food-web/tsconfig.app.json",
+          "hash": "8365644956319658761"
         },
         {
-          "file": "raw-food-api/src/food/repository/models/food-item.model.ts",
-          "hash": "1974262533401172294"
+          "file": "raw-food-web/tsconfig.editor.json",
+          "hash": "17511610827034788226"
         },
         {
-          "file": "raw-food-api/src/food/repository/models/food.model.ts",
-          "hash": "1372419410154649455"
+          "file": "raw-food-web/tsconfig.json",
+          "hash": "12094030803572703611"
         },
         {
-          "file": "raw-food-api/src/main.ts",
-          "hash": "1102946097300517258"
-        },
-        {
-          "file": "raw-food-api/src/services/prisma.service.ts",
-          "hash": "17293215127864239201"
-        },
-        {
-          "file": "raw-food-api/tsconfig.app.json",
-          "hash": "3171572500325445971"
-        },
-        {
-          "file": "raw-food-api/tsconfig.json",
-          "hash": "3490524966360018312"
-        },
-        {
-          "file": "raw-food-api/tsconfig.spec.json",
-          "hash": "11550347367511341917"
-        },
-        {
-          "file": "raw-food-api/webpack.config.js",
-          "hash": "5708803163266262522"
+          "file": "raw-food-web/tsconfig.spec.json",
+          "hash": "2927375835638640771"
         }
       ],
       "raw-food-mobile": [
@@ -274,6 +254,124 @@
           "hash": "2927375835638640771"
         }
       ],
+      "raw-food-api": [
+        {
+          "file": "raw-food-api/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "raw-food-api/jest.config.ts",
+          "hash": "1516113222066837972"
+        },
+        {
+          "file": "raw-food-api/nest-cli.json",
+          "hash": "789240945379598733"
+        },
+        {
+          "file": "raw-food-api/prisma/schema.prisma",
+          "hash": "12424552881584024990"
+        },
+        {
+          "file": "raw-food-api/project.json",
+          "hash": "3120367736751368166"
+        },
+        {
+          "file": "raw-food-api/src/app.module.ts",
+          "hash": "7956684730710412510"
+        },
+        {
+          "file": "raw-food-api/src/food/dto/create-food.dto.ts",
+          "hash": "12750471329514303174"
+        },
+        {
+          "file": "raw-food-api/src/food/dto/food-item.dto.ts",
+          "hash": "10676069797212625229"
+        },
+        {
+          "file": "raw-food-api/src/food/dto/update-food.dto.ts",
+          "hash": "17822690902922912189"
+        },
+        {
+          "file": "raw-food-api/src/food/food.controller.ts",
+          "hash": "9327116749488055229"
+        },
+        {
+          "file": "raw-food-api/src/food/food.module.ts",
+          "hash": "1690335932049802822"
+        },
+        {
+          "file": "raw-food-api/src/food/food.service.ts",
+          "hash": "4629983457093966071"
+        },
+        {
+          "file": "raw-food-api/src/food/httpExceptions/food-already-exists-error-exception.ts",
+          "hash": "13087948023814049282"
+        },
+        {
+          "file": "raw-food-api/src/food/httpExceptions/food-doesnt-exists-error-exception.ts",
+          "hash": "1767371246877528195"
+        },
+        {
+          "file": "raw-food-api/src/food/httpExceptions/food-label-already-exists-error-exception.ts",
+          "hash": "14117532247170384746"
+        },
+        {
+          "file": "raw-food-api/src/food/httpExceptions/http-exception.filter.ts",
+          "hash": "2425797797171282891"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/dao/food.dao.ts",
+          "hash": "9628890696247036467"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/db-errors-codes.ts",
+          "hash": "8083104054569745475"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/entities/food-create.entity.ts",
+          "hash": "14745800839494877709"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/entities/food-update.entity.ts",
+          "hash": "11405615004919340171"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/food.repository.ts",
+          "hash": "15914438936483235832"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/models/food-item.model.ts",
+          "hash": "1974262533401172294"
+        },
+        {
+          "file": "raw-food-api/src/food/repository/models/food.model.ts",
+          "hash": "1372419410154649455"
+        },
+        {
+          "file": "raw-food-api/src/main.ts",
+          "hash": "1102946097300517258"
+        },
+        {
+          "file": "raw-food-api/src/services/prisma.service.ts",
+          "hash": "17293215127864239201"
+        },
+        {
+          "file": "raw-food-api/tsconfig.app.json",
+          "hash": "3171572500325445971"
+        },
+        {
+          "file": "raw-food-api/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "raw-food-api/tsconfig.spec.json",
+          "hash": "11550347367511341917"
+        },
+        {
+          "file": "raw-food-api/webpack.config.js",
+          "hash": "5708803163266262522"
+        }
+      ],
       "raw-food-api-e2e": [
         {
           "file": "raw-food-api-e2e/.eslintrc.json",
@@ -315,7 +413,7 @@
     },
     "nonProjectFiles": [
       {
-        "file": "NX",
+        "file": "nx",
         "hash": "3244421341483603138"
       }
     ]

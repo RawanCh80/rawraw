@@ -206,6 +206,110 @@
         "tags": [],
         "implicitDependencies": []
       }
+    },
+    "raw-food-web": {
+      "name": "raw-food-web",
+      "type": "app",
+      "data": {
+        "root": "raw-food-web",
+        "name": "raw-food-web",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "prefix": "rawraw",
+        "sourceRoot": "apps/raw-food-web/src",
+        "tags": [],
+        "targets": {
+          "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/apps/raw-food-web",
+              "index": "apps/raw-food-web/src/index.html",
+              "main": "apps/raw-food-web/src/main.ts",
+              "polyfills": [
+                "zone.js"
+              ],
+              "tsConfig": "apps/raw-food-web/tsconfig.app.json",
+              "inlineStyleLanguage": "scss",
+              "assets": [
+                "apps/raw-food-web/src/favicon.ico",
+                "apps/raw-food-web/src/assets"
+              ],
+              "styles": [
+                "apps/raw-food-web/src/styles.scss"
+              ],
+              "scripts": []
+            },
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "500kb",
+                    "maximumError": "1mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "buildTarget": "raw-food-web:build:production"
+              },
+              "development": {
+                "buildTarget": "raw-food-web:build:development"
+              }
+            },
+            "defaultConfiguration": "development",
+            "options": {}
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "buildTarget": "raw-food-web:build"
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/raw-food-web/jest.config.ts"
+            },
+            "configurations": {}
+          }
+        },
+        "implicitDependencies": []
+      }
     }
   },
   "externalNodes": {},
@@ -218,7 +322,8 @@
       }
     ],
     "raw-food-mobile": [],
-    "raw-food-api": []
+    "raw-food-api": [],
+    "raw-food-web": []
   },
   "version": "6.0"
 }
