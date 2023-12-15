@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card class="food-list-page">
+    <mat-card-header>
+
+      <mat-card-title class="title text-center">
+        Foodies
+      </mat-card-title>
+      <mat-card-subtitle class="sub-title text-center ">
+        Your way to happiness
+      </mat-card-subtitle>
+
+    </mat-card-header>
+    <mat-card-content class="food-list">
+      <mat-list>
+        <mat-list-item *ngFor="let foodItem of foodList" class="food-list-item">
+          <div>
+            <h3>{{foodItem.label}}</h3>
+            <p>{{foodItem.description}}</p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <div class="button-container">
+        <button mat-raised-button  (click)="presentAddFoodDialog()" >Add Food</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

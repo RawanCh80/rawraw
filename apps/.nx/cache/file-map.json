@@ -6,300 +6,6 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "raw-food-api-e2e": [
-        {
-          "file": "raw-food-api-e2e/.eslintrc.json",
-          "hash": "13800677001662881425"
-        },
-        {
-          "file": "raw-food-api-e2e/jest.config.ts",
-          "hash": "11933232825996374869"
-        },
-        {
-          "file": "raw-food-api-e2e/project.json",
-          "hash": "11538720472315232028"
-        },
-        {
-          "file": "raw-food-api-e2e/src/raw-food-api/raw-food-api.spec.ts",
-          "hash": "110394728024017389"
-        },
-        {
-          "file": "raw-food-api-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "raw-food-api-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "raw-food-api-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441"
-        },
-        {
-          "file": "raw-food-api-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
-        },
-        {
-          "file": "raw-food-api-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
-        }
-      ],
-      "raw-food-web": [
-        {
-          "file": "raw-food-web/.eslintrc.json",
-          "hash": "5301715727768953387"
-        },
-        {
-          "file": "raw-food-web/jest.config.ts",
-          "hash": "3695358536536221814"
-        },
-        {
-          "file": "raw-food-web/project.json",
-          "hash": "1364977150897657703"
-        },
-        {
-          "file": "raw-food-web/src/app/app.component.html",
-          "hash": "10926219532137688934"
-        },
-        {
-          "file": "raw-food-web/src/app/app.component.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "raw-food-web/src/app/app.component.spec.ts",
-          "hash": "13888645934648635120"
-        },
-        {
-          "file": "raw-food-web/src/app/app.component.ts",
-          "hash": "3266500119228018640"
-        },
-        {
-          "file": "raw-food-web/src/app/app.config.ts",
-          "hash": "10618457967269332155"
-        },
-        {
-          "file": "raw-food-web/src/app/app.module.ts",
-          "hash": "4700405664547694528"
-        },
-        {
-          "file": "raw-food-web/src/app/app.routes.ts",
-          "hash": "6185150965714414910"
-        },
-        {
-          "file": "raw-food-web/src/app/food-list.page/food-list-routing.module.ts",
-          "hash": "14127782129925496799"
-        },
-        {
-          "file": "raw-food-web/src/app/food-list.page/food-list.module.ts",
-          "hash": "1275997364800547177"
-        },
-        {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.html",
-          "hash": "3954810510406318306"
-        },
-        {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "raw-food-web/src/app/food-list.page/food-list.page.ts",
-          "hash": "1772250089455153834"
-        },
-        {
-          "file": "raw-food-web/src/app/nx-welcome.component.ts",
-          "hash": "1157964029242726099"
-        },
-        {
-          "file": "raw-food-web/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "raw-food-web/src/favicon.ico",
-          "hash": "9303420814833116677"
-        },
-        {
-          "file": "raw-food-web/src/index.html",
-          "hash": "13677363148993380930"
-        },
-        {
-          "file": "raw-food-web/src/main.ts",
-          "hash": "732663438483983849"
-        },
-        {
-          "file": "raw-food-web/src/styles.scss",
-          "hash": "5195668842064076916"
-        },
-        {
-          "file": "raw-food-web/src/test-setup.ts",
-          "hash": "12935735732682149507"
-        },
-        {
-          "file": "raw-food-web/tsconfig.app.json",
-          "hash": "8365644956319658761"
-        },
-        {
-          "file": "raw-food-web/tsconfig.editor.json",
-          "hash": "17511610827034788226"
-        },
-        {
-          "file": "raw-food-web/tsconfig.json",
-          "hash": "12094030803572703611"
-        },
-        {
-          "file": "raw-food-web/tsconfig.spec.json",
-          "hash": "2927375835638640771"
-        }
-      ],
-      "raw-food-mobile": [
-        {
-          "file": "raw-food-mobile/.eslintrc.json",
-          "hash": "5301715727768953387"
-        },
-        {
-          "file": "raw-food-mobile/angular.json",
-          "hash": "15371441958222571707"
-        },
-        {
-          "file": "raw-food-mobile/ionic.config.json",
-          "hash": "9852773388017489417"
-        },
-        {
-          "file": "raw-food-mobile/ionic.starter.json",
-          "hash": "6623458667705220875"
-        },
-        {
-          "file": "raw-food-mobile/jest.config.ts",
-          "hash": "2417630120455650553"
-        },
-        {
-          "file": "raw-food-mobile/project.json",
-          "hash": "17005325728167618354"
-        },
-        {
-          "file": "raw-food-mobile/src/app/app-routing.module.ts",
-          "hash": "10591188374139958613"
-        },
-        {
-          "file": "raw-food-mobile/src/app/app.component.html",
-          "hash": "12139992690072916112"
-        },
-        {
-          "file": "raw-food-mobile/src/app/app.component.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "raw-food-mobile/src/app/app.component.ts",
-          "hash": "7749095843608548644"
-        },
-        {
-          "file": "raw-food-mobile/src/app/app.module.ts",
-          "hash": "12389727244323140317"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal.html",
-          "hash": "13386386815779100985"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal.ts",
-          "hash": "1554376876254627773"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal.html",
-          "hash": "17626234005166917013"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal.ts",
-          "hash": "6997978619985367592"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-list-routing.module.ts",
-          "hash": "16613654477275632842"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-list.module.ts",
-          "hash": "10107045588704096675"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-list.page.html",
-          "hash": "3976247701320511656"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-list.page.scss",
-          "hash": "10316440581438426644"
-        },
-        {
-          "file": "raw-food-mobile/src/app/food-list/food-list.page.ts",
-          "hash": "748461435657115212"
-        },
-        {
-          "file": "raw-food-mobile/src/assets/icon/favicon.png",
-          "hash": "17482944836898362639"
-        },
-        {
-          "file": "raw-food-mobile/src/assets/shapes.svg",
-          "hash": "6977491585386779090"
-        },
-        {
-          "file": "raw-food-mobile/src/environments/environment.prod.ts",
-          "hash": "5406836414239361753"
-        },
-        {
-          "file": "raw-food-mobile/src/environments/environment.ts",
-          "hash": "17458466784506237106"
-        },
-        {
-          "file": "raw-food-mobile/src/global.scss",
-          "hash": "16777120732726033300"
-        },
-        {
-          "file": "raw-food-mobile/src/index.html",
-          "hash": "11919868269841232961"
-        },
-        {
-          "file": "raw-food-mobile/src/main.ts",
-          "hash": "3447864527603543144"
-        },
-        {
-          "file": "raw-food-mobile/src/polyfills.ts",
-          "hash": "904466970859024605"
-        },
-        {
-          "file": "raw-food-mobile/src/test.ts",
-          "hash": "12174314258302414798"
-        },
-        {
-          "file": "raw-food-mobile/src/theme/variables.scss",
-          "hash": "12401277069900609777"
-        },
-        {
-          "file": "raw-food-mobile/src/zone-flags.ts",
-          "hash": "3323586086306676158"
-        },
-        {
-          "file": "raw-food-mobile/tsconfig.app.json",
-          "hash": "8365644956319658761"
-        },
-        {
-          "file": "raw-food-mobile/tsconfig.editor.json",
-          "hash": "17511610827034788226"
-        },
-        {
-          "file": "raw-food-mobile/tsconfig.json",
-          "hash": "12094030803572703611"
-        },
-        {
-          "file": "raw-food-mobile/tsconfig.spec.json",
-          "hash": "2927375835638640771"
-        }
-      ],
       "raw-food-api": [
         {
           "file": "raw-food-api/.eslintrc.json",
@@ -417,9 +123,319 @@
           "file": "raw-food-api/webpack.config.js",
           "hash": "5708803163266262522"
         }
+      ],
+      "raw-food-api-e2e": [
+        {
+          "file": "raw-food-api-e2e/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "raw-food-api-e2e/jest.config.ts",
+          "hash": "11933232825996374869"
+        },
+        {
+          "file": "raw-food-api-e2e/project.json",
+          "hash": "11538720472315232028"
+        },
+        {
+          "file": "raw-food-api-e2e/src/raw-food-api/raw-food-api.spec.ts",
+          "hash": "110394728024017389"
+        },
+        {
+          "file": "raw-food-api-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "raw-food-api-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "raw-food-api-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441"
+        },
+        {
+          "file": "raw-food-api-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "raw-food-api-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
+      "raw-food-web": [
+        {
+          "file": "raw-food-web/.eslintrc.json",
+          "hash": "5301715727768953387"
+        },
+        {
+          "file": "raw-food-web/jest.config.ts",
+          "hash": "3695358536536221814"
+        },
+        {
+          "file": "raw-food-web/project.json",
+          "hash": "1364977150897657703"
+        },
+        {
+          "file": "raw-food-web/src/app/app-routing.module.ts",
+          "hash": "7084478665635336107"
+        },
+        {
+          "file": "raw-food-web/src/app/app.component.html",
+          "hash": "10926219532137688934"
+        },
+        {
+          "file": "raw-food-web/src/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "raw-food-web/src/app/app.component.spec.ts",
+          "hash": "13888645934648635120"
+        },
+        {
+          "file": "raw-food-web/src/app/app.component.ts",
+          "hash": "3266500119228018640"
+        },
+        {
+          "file": "raw-food-web/src/app/app.config.ts",
+          "hash": "7608249891914835571"
+        },
+        {
+          "file": "raw-food-web/src/app/app.module.ts",
+          "hash": "765834882921567959"
+        },
+        {
+          "file": "raw-food-web/src/app/app.routes.ts",
+          "hash": "12790378059371385261"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list-routing.module.ts",
+          "hash": "10739594918298967072"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list.module.ts",
+          "hash": "10075574160459258186"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.html",
+          "hash": "10855778671011572350"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.scss",
+          "hash": "9254273398383488241"
+        },
+        {
+          "file": "raw-food-web/src/app/food-list.page/food-list.page.ts",
+          "hash": "261916047533311477"
+        },
+        {
+          "file": "raw-food-web/src/app/nx-welcome.component.ts",
+          "hash": "1157964029242726099"
+        },
+        {
+          "file": "raw-food-web/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "raw-food-web/src/environment/environment.prod.ts",
+          "hash": "11847377846594200203"
+        },
+        {
+          "file": "raw-food-web/src/environment/environment.ts",
+          "hash": "14410313991637913761"
+        },
+        {
+          "file": "raw-food-web/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "raw-food-web/src/index.html",
+          "hash": "5941016707529102680"
+        },
+        {
+          "file": "raw-food-web/src/main.ts",
+          "hash": "10544114354665749988"
+        },
+        {
+          "file": "raw-food-web/src/styles.scss",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "raw-food-web/src/test-setup.ts",
+          "hash": "12935735732682149507"
+        },
+        {
+          "file": "raw-food-web/tsconfig.app.json",
+          "hash": "8365644956319658761"
+        },
+        {
+          "file": "raw-food-web/tsconfig.editor.json",
+          "hash": "17511610827034788226"
+        },
+        {
+          "file": "raw-food-web/tsconfig.json",
+          "hash": "12094030803572703611"
+        },
+        {
+          "file": "raw-food-web/tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
+      ],
+      "raw-food-mobile": [
+        {
+          "file": "raw-food-mobile/.eslintrc.json",
+          "hash": "5301715727768953387"
+        },
+        {
+          "file": "raw-food-mobile/angular.json",
+          "hash": "15371441958222571707"
+        },
+        {
+          "file": "raw-food-mobile/ionic.config.json",
+          "hash": "9852773388017489417"
+        },
+        {
+          "file": "raw-food-mobile/ionic.starter.json",
+          "hash": "6623458667705220875"
+        },
+        {
+          "file": "raw-food-mobile/jest.config.ts",
+          "hash": "2417630120455650553"
+        },
+        {
+          "file": "raw-food-mobile/project.json",
+          "hash": "17005325728167618354"
+        },
+        {
+          "file": "raw-food-mobile/src/app/app-routing.module.ts",
+          "hash": "10591188374139958613"
+        },
+        {
+          "file": "raw-food-mobile/src/app/app.component.html",
+          "hash": "12139992690072916112"
+        },
+        {
+          "file": "raw-food-mobile/src/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "raw-food-mobile/src/app/app.component.ts",
+          "hash": "12221052011387848251"
+        },
+        {
+          "file": "raw-food-mobile/src/app/app.module.ts",
+          "hash": "793516697719529449"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal.html",
+          "hash": "13386386815779100985"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-create-modal/food-create.modal.ts",
+          "hash": "13483161450086243970"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal.html",
+          "hash": "17626234005166917013"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal.ts",
+          "hash": "10162552980877149400"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-list-routing.module.ts",
+          "hash": "16613654477275632842"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-list.module.ts",
+          "hash": "10107045588704096675"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-list.page.html",
+          "hash": "3976247701320511656"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-list.page.scss",
+          "hash": "10316440581438426644"
+        },
+        {
+          "file": "raw-food-mobile/src/app/food-list/food-list.page.ts",
+          "hash": "748461435657115212"
+        },
+        {
+          "file": "raw-food-mobile/src/assets/icon/favicon.png",
+          "hash": "17482944836898362639"
+        },
+        {
+          "file": "raw-food-mobile/src/assets/shapes.svg",
+          "hash": "6977491585386779090"
+        },
+        {
+          "file": "raw-food-mobile/src/environments/environment.prod.ts",
+          "hash": "5406836414239361753"
+        },
+        {
+          "file": "raw-food-mobile/src/environments/environment.ts",
+          "hash": "17458466784506237106"
+        },
+        {
+          "file": "raw-food-mobile/src/global.scss",
+          "hash": "16777120732726033300"
+        },
+        {
+          "file": "raw-food-mobile/src/index.html",
+          "hash": "11919868269841232961"
+        },
+        {
+          "file": "raw-food-mobile/src/main.ts",
+          "hash": "3447864527603543144"
+        },
+        {
+          "file": "raw-food-mobile/src/polyfills.ts",
+          "hash": "904466970859024605"
+        },
+        {
+          "file": "raw-food-mobile/src/test.ts",
+          "hash": "12174314258302414798"
+        },
+        {
+          "file": "raw-food-mobile/src/theme/variables.scss",
+          "hash": "12401277069900609777"
+        },
+        {
+          "file": "raw-food-mobile/src/zone-flags.ts",
+          "hash": "3323586086306676158"
+        },
+        {
+          "file": "raw-food-mobile/tsconfig.app.json",
+          "hash": "8365644956319658761"
+        },
+        {
+          "file": "raw-food-mobile/tsconfig.editor.json",
+          "hash": "17511610827034788226"
+        },
+        {
+          "file": "raw-food-mobile/tsconfig.json",
+          "hash": "12094030803572703611"
+        },
+        {
+          "file": "raw-food-mobile/tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
       ]
     },
     "nonProjectFiles": [
+      {
+        "file": "ng",
+        "hash": "3244421341483603138"
+      },
       {
         "file": "nx",
         "hash": "3244421341483603138"

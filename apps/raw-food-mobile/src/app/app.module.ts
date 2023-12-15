@@ -8,6 +8,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { FoodDetailsModal } from "./food-list/food-details-modal/food-details.modal";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FoodCreateModal } from "./food-list/food-create-modal/food-create.modal";
+import { MatButtonModule, MatIconButton } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [AppComponent, FoodDetailsModal, FoodCreateModal],

@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { FoodClient, FoodForCreationInterface } from "../../../index";
+import { FoodClient, FoodForCreationInterface, FoodForUpdateInterface } from "../../../index";
 import { map, Observable, startWith, Subject, switchMap, tap } from "rxjs";
 
 import { FoodItemBo } from "../bos/food-item.bo";
 import { FoodModel } from "../../../index";
 import { FoodForCreationDto } from "../../../index";
 import { FoodForUpdatedDto } from "../../../index";
-import { FoodForUpdateInterface } from "../../../../../../apps/raw-food-mobile/src/app/food-list/food-details-modal/food-details.modal";
+
 
 @Injectable({
   providedIn: 'root'
