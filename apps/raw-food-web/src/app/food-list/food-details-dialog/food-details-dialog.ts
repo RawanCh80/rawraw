@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { lastValueFrom, Subscription } from "rxjs";
-import { FoodBo, FoodForCreationInterface, FoodForUpdateInterface, FoodsService } from "@rawraw/app";
-import { MatDialog } from "@angular/material/dialog";
+import { FoodBo, FoodsService } from "@rawraw/app";
+import { MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 interface FoodForUpdateFormGroupInterface {
@@ -14,15 +14,16 @@ interface FoodForUpdateFormGroupInterface {
   templateUrl: './food-details-dialog.html',
   styleUrls: ['./food-details-dialog.scss'],
 })
-export class FoodDetailsDialog  implements OnInit, OnDestroy {
-  foodId: string;
+export class FoodDetailsDialog implements OnInit, OnDestroy {
+
   public foodDetailsForm: FormGroup;
   private subscription$ = new Subscription();
 
   constructor(
     public matDialog: MatDialog,
     private matSnackBar: MatSnackBar,
-    private foodService: FoodsService) {
+    private foodService: FoodsService,
+    @Inject(MAT_DIALOG_DATA) public data: { foodId: string }) {
     this.foodDetailsForm = new FormGroup<FoodForUpdateFormGroupInterface>({
         label: new FormControl(''),
         description: new FormControl('')
@@ -40,7 +41,7 @@ export class FoodDetailsDialog  implements OnInit, OnDestroy {
 
   public getFoodSubscription() {
     const subscription = this.foodService
-      .getFood(this.foodId)
+      .getFood(this.data.foodId)
       .subscribe((foodBo: FoodBo) => {
         this.foodDetailsForm.patchValue({
           label: foodBo.label,
@@ -49,22 +50,27 @@ export class FoodDetailsDialog  implements OnInit, OnDestroy {
       });
     this.subscription$.add(subscription);
   }
+
   public async dismissDialog() {
     return this.matDialog.closeAll();
   }
+
   async updateFood() {
     try {
-      const foodFormValue = this.foodDetailsForm.value as FoodForUpdateInterface;
-      await lastValueFrom(this.foodService.createFood(foodFormValue));
-      await this.dismissDialog();
-      let snack = this.matSnackBar
+      await lastValueFrom(this.foodService
+        .updateFood(this.data.foodId, this.foodDetailsForm.value));
+      let matSnackBar = this.matSnackBar
         .open('food updated successfully',
-        'Close', {
-          duration: 5000
-        });
+          'Close', {
+            duration: 2000,
+            horizontalPosition: "center",
+            verticalPosition: "top"
+          });
+      await this.dismissDialog();
     } catch (err) {
-      let snackBar = this.matSnackBar.open('food cannot be updated');
-      console.error();
+      let snackBar = this.matSnackBar
+        .open('food cannot be updated');
+      console.error('');
     }
   }
 }
