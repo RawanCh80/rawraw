@@ -8,11 +8,8 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { IonicModule } from "@ionic/angular";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
-
   imports: [
     CommonModule,
     FormsModule,
@@ -24,7 +21,6 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatIconModule
   ],
   declarations: [FoodListPage]
-
 })
 export class FoodListModule {
 }
