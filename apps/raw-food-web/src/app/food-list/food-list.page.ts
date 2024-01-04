@@ -7,7 +7,7 @@ import { FoodDeleteAlertDialog } from "./food-delete-alert-dialog/food-delete-al
 
 @Component({
   templateUrl: 'food-list.page.html',
-  styleUrls: ['food-list.page.scss'],
+  styleUrls: ['food-list.page.scss']
 })
 export class FoodListPage extends FoodListBase {
   isDialogOpen = false;
@@ -35,8 +35,12 @@ export class FoodListPage extends FoodListBase {
             data: {
               foodId: foodId
             },
-            width: '500px',
             height: '300px',
+            width: '1000px',
+            position:{
+              top:'-70vh',
+              left:'300px'
+            }
           });
       dialogRef.afterClosed().subscribe(result => {
         this.isDialogOpen = false;
@@ -48,11 +52,14 @@ export class FoodListPage extends FoodListBase {
     if (!this.isDialogOpen) {
       this.isDialogOpen = true;
       const dialogRef = this.matDialog
-        .open(FoodCreateDialog,
-          {
-            width: '500px',
-            height: '300px',
-          });
+        .open(FoodCreateDialog, {
+            height: '60vh',
+            width: '60vh',
+              position:{
+              top:'-70vh',
+                left:'30vh'
+              }
+        });
       dialogRef.afterClosed().subscribe(result => {
         this.isDialogOpen = false;
       });
@@ -68,8 +75,12 @@ export class FoodListPage extends FoodListBase {
             data: {
               foodId: foodItemBo.id
             },
-            width: '500px',
-            height: '300px',
+            height: '60vh',
+            width: '60vh',
+            position:{
+              top:'-70vh',
+              left:'30vh'
+            }
           });
       dialogRef.afterClosed().subscribe(result => {
         this.isDialogOpen = false;

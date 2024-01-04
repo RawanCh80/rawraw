@@ -38,8 +38,9 @@ export class FoodCreateDialog {
       await this.dismissDialog();
       this.matSnackBar.open('food created successfully',
         'Close', {
-          duration: 5000
-        });
+          duration: 3000
+        },
+      );
     } catch (err) {
       this.matSnackBar.open('food cannot be created');
       console.error();

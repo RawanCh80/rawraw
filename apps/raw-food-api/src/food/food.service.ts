@@ -61,14 +61,14 @@ export class FoodService {
 		try {
 			const foodDao = new FoodDao(foodId, updateFoodDto);
 			const foundFoodById = await this.findFoodById(foodId);
-			const foundFoodByLabel = await foodDao.findByLabel();
-			const isSameFoodLabel = foundFoodByLabel.id === foodId;
+			// const foundFoodByLabel = await foodDao.findByLabel();
+			// const isSameFoodLabel = foundFoodByLabel.id === foodId;
 			if (!foundFoodById) {
 				throw new FoodDoesntExistsErrorException();
 			}
-			if (foundFoodByLabel && !isSameFoodLabel) {
-				throw new FoodLabelAlreadyExistsErrorException();
-			}
+			// if (foundFoodByLabel && !isSameFoodLabel) {
+			// 	throw new FoodLabelAlreadyExistsErrorException();
+			// }
 			return foodDao.save();
 		} catch (error: any) {
 			if (error instanceof HttpException) {
