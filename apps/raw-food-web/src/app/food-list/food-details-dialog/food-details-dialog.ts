@@ -14,7 +14,7 @@ interface FoodForUpdateFormGroupInterface {
   templateUrl: './food-details-dialog.html',
   styleUrls: ['./food-details-dialog.scss'],
 })
-export class FoodDetailsDialog implements OnInit, OnDestroy {
+export class FoodDetailsDialog  implements OnInit, OnDestroy {
   foodId: string;
   public foodDetailsForm: FormGroup;
   private subscription$ = new Subscription();
@@ -57,7 +57,8 @@ export class FoodDetailsDialog implements OnInit, OnDestroy {
       const foodFormValue = this.foodDetailsForm.value as FoodForUpdateInterface;
       await lastValueFrom(this.foodService.createFood(foodFormValue));
       await this.dismissDialog();
-      let snack = this.matSnackBar.open('food updated successfully',
+      let snack = this.matSnackBar
+        .open('food updated successfully',
         'Close', {
           duration: 5000
         });

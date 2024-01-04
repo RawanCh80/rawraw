@@ -16,9 +16,11 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from "@angular/material/snack-bar";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FoodDetailsDialog } from "./food-list/food-details-dialog/food-details-dialog";
+import { FoodDeleteAlertDialog } from "./food-list/food-delete-alert-dialog/food-delete-alert-dialog";
 
 @NgModule({
-  declarations: [AppComponent, FoodCreateDialog],
+  declarations: [AppComponent, FoodCreateDialog,FoodDetailsDialog,FoodDeleteAlertDialog],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
