@@ -14,6 +14,7 @@ interface FoodForCreationFormGroupInterface {
   templateUrl: './food-create-dialog.html',
   styleUrls: ['./food-create-dialog.scss'],
 })
+
 export class FoodCreateDialog {
   public foodForm = new FormGroup<FoodForCreationFormGroupInterface>({
     label: new FormControl('', {nonNullable: true}),
@@ -35,12 +36,12 @@ export class FoodCreateDialog {
       const foodFormValue = this.foodForm.value as FoodForCreationInterface;
       await lastValueFrom(this.foodService.createFood(foodFormValue));
       await this.dismissDialog();
-      let snack = this.matSnackBar.open('food created successfully',
+      this.matSnackBar.open('food created successfully',
         'Close', {
           duration: 5000
         });
     } catch (err) {
-      let snackBar = this.matSnackBar.open('food cannot be created');
+      this.matSnackBar.open('food cannot be created');
       console.error();
     }
   }
