@@ -6,12 +6,12 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   templateUrl: './food-delete-alert-dialog.html',
-  styleUrl: './food-delete-alert-dialog.css',
+  styleUrl: './food-delete-alert-dialog.scss',
 })
 export class FoodDeleteAlertDialog {
 
   constructor(public matDialog: MatDialog,
-              public matSnackBar:MatSnackBar,
+              public matSnackBar: MatSnackBar,
               private foodService: FoodsService,
               @Inject(MAT_DIALOG_DATA) public data: { foodId: string }) {
   }
@@ -19,23 +19,19 @@ export class FoodDeleteAlertDialog {
   public async dismissDeleteAlertDialog() {
     return this.matDialog.closeAll();
   }
- async deleteFood() {
-    try{
-    await lastValueFrom(this.foodService
-      .deleteFood(this.data.foodId));
-      let matSnackBar = this.matSnackBar
-        .open('food deleted successfully',
-          'Close', {
-            duration: 2000,
-            horizontalPosition: "center",
-            verticalPosition: "top"
-          });
+
+  async deleteFood() {
+    try {
+      await lastValueFrom(this.foodService
+        .deleteFood(this.data.foodId));
+      this.matSnackBar.open('food deleted successfully',
+        'Close', {
+          duration: 2000
+        });
       await this.dismissDeleteAlertDialog();
     } catch (err) {
-      let snackBar = this.matSnackBar
-        .open('food cannot be deleted');
+      this.matSnackBar.open('food cannot be deletedK');
       console.error('');
     }
   }
-
 }
