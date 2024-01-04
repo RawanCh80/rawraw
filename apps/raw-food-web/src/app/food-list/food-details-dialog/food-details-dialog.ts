@@ -6,6 +6,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './food-details-dialog.html',
-  styleUrl: './food-details-dialog.css',
+  styleUrl: './food-details-dialog.scss',
 })
 export class FoodDetailsDialog {}
