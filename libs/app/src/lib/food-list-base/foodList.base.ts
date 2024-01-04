@@ -5,10 +5,10 @@ export abstract class FoodListBase {
   public foodList: FoodItemBo[] = [];
   subscription$ = new Subscription();
 
-  protected constructor(private foodddService: FoodsService) {
+  protected constructor(private foOdService: FoodsService) {
   }
   protected getFoodListSubscription() {
-    const subscription = this.foodddService
+    const subscription = this.foOdService
       .getFoods()
       .subscribe(
         (foodList: FoodItemBo[]) => {
