@@ -9,8 +9,6 @@ interface FoodForCreationFormGroupInterface {
   description: FormControl<string>;
 }
 
-
-
 @Component({
   templateUrl: './food-create.modal.html',
   styleUrls: ['./food-create.modal.scss'],
