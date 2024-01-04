@@ -2,21 +2,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from "@ionic/angular";
 import { FoodDetailsModal } from "./food-details-modal/food-details.modal";
 import { FoodCreateModal } from "./food-create-modal/food-create.modal";
-import { lastValueFrom, Subscription } from "rxjs";
-import { FoodItemBo, FoodsService } from "@rawraw/app";
+import { lastValueFrom } from "rxjs";
+import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
 
 @Component({
   templateUrl: 'food-list.page.html',
   styleUrls: ['food-list.page.scss'],
 })
-export class FoodListPage implements OnInit, OnDestroy {
-  public foodList: FoodItemBo[] = [];
-  private subscription$ = new Subscription();
+export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
 
   constructor(private alertController: AlertController,
               private modalController: ModalController,
               private toastController: ToastController,
-              private foodService: FoodsService) {
+              protected foodService: FoodsService) {
+    super(foodService);
   }
 
   ngOnInit(): void {
@@ -77,14 +76,4 @@ export class FoodListPage implements OnInit, OnDestroy {
     modal.present();
   }
 
-  private getFoodListSubscription() {
-    const subscription = this.foodService
-      .getFoods()
-      .subscribe(
-        (foodList: FoodItemBo[]) => {
-          this.foodList = foodList;
-        }
-      );
-    this.subscription$.add(subscription);
-  }
 }

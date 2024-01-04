@@ -14,13 +14,17 @@
       <mat-list>
         <mat-list-item *ngFor="let foodItem of foodList" class="food-list-item">
           <div>
-            <h3>{{foodItem.label}}</h3>
-            <p>{{foodItem.description}}</p>
+            <h3 class="label-text">{{foodItem.label}}</h3>
+            <p class="description-text">{{foodItem.description}}</p>
+          </div>
+          <div class="delete-add-buttons">
+            <button class="delete-button" mat-raised-button (click)="presentAlertDeleteFood()">delete</button>
+            <button class="edit-button" mat-raised-button (click)="presentFoodDetailsDialog()">edit</button>
           </div>
         </mat-list-item>
       </mat-list>
       <div class="button-container">
-        <button mat-raised-button  (click)="presentAddFoodDialog()" >Add Food</button>
+        <button class="add-button" mat-raised-button (click)="presentAddFoodDialog()">Add Food</button>
       </div>
     </mat-card-content>
   </mat-card>

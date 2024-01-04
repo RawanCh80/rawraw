@@ -8,4 +8,6 @@ export * from './lib/foods/dto/food-for-updated.dto';
 export * from './lib/foods/services/foods.service';
 export * from './lib/foods/interfaces/food-for-creation.interface';
 export * from './lib/foods/interfaces/food-for-updated.interface';
+export * from './lib/food-list-base/foodList.base';
+
 

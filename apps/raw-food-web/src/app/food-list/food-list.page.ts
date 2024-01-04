@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
-import { FoodItemBo, FoodsService } from "@rawraw/app";
-import { Subscription } from "rxjs";
+import { FoodListBase, FoodsService } from "@rawraw/app";
 import { MatDialog } from "@angular/material/dialog";
 import { FoodCreateDialog } from "./food-create-dialog/food-create-dialog";
 
 @Component({
   templateUrl: 'food-list.page.html',
-  styleUrl: 'food-list.page.scss',
+  styleUrls: ['food-list.page.scss'],
 })
-export class FoodListPage {
-  public foodList: FoodItemBo[] = [];
-  private subscription$ = new Subscription();
-
+export class FoodListPage extends FoodListBase {
+  isDialogOpen = false;
   constructor(
     private matDialog: MatDialog,
-    private foodService: FoodsService) {
+    protected foodService: FoodsService) {
+    super(foodService);
   }
 
   ngOnInit(): void {
@@ -25,27 +23,28 @@ export class FoodListPage {
     this.subscription$.unsubscribe();
   }
 
-  private getFoodListSubscription() {
-    const subscription = this.foodService
-      .getFoods()
-      .subscribe(
-        (foodList: FoodItemBo[]) => {
-          this.foodList = foodList;
-        }
-      );
-    this.subscription$.add(subscription);
-  }
-
   presentAddFoodDialog() {
-    let dialogRef = this.matDialog.open(FoodCreateDialog, {
-      width: '400px',
-      height:'350px',
-      position: {
-        top: '-35%', // Adjust these values to position the dialog as needed
-        left: '35%',
-      },
-    });
+    if (!this.isDialogOpen) {
+      this.isDialogOpen=true;
+      const dialogRef = this.matDialog.open(FoodCreateDialog, {
+        width: '500px',
+        height: '300px',
+        // Other dialog options
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.isDialogOpen=false;
+        // Handle actions after dialog is closed if needed
+      });
+
+    }
   }
 
-}
+  presentAlertDeleteFood() {
 
+  }
+
+  presentFoodDetailsDialog() {
+
+  }
+}
