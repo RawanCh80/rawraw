@@ -10,7 +10,6 @@ import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
   styleUrls: ['food-list.page.scss'],
 })
 export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
-
   constructor(private alertController: AlertController,
               private modalController: ModalController,
               private toastController: ToastController,
@@ -75,5 +74,4 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
       });
     modal.present();
   }
-
 }

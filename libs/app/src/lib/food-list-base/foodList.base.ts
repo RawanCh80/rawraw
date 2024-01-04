@@ -7,6 +7,7 @@ export abstract class FoodListBase {
 
   protected constructor(private foOdService: FoodsService) {
   }
+
   protected getFoodListSubscription() {
     const subscription = this.foOdService
       .getFoods()
