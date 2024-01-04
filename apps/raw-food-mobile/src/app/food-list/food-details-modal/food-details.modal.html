@@ -9,23 +9,23 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-    <form [formGroup]="foodDetailsForm">
-      <div class="label-input">
-        <ion-input
-          formControlName="label"
-          label="Enter new label : "
-          labelPlacement="stacked"
-          placeholder="new label"
-          type="text">
-        </ion-input>
-      </div>
-      <div class="description-text">
-        <ion-textarea
-          formControlName="description"
-          label="Enter new description : "
-          labelPlacement="stacked"
-          placeholder="new description">
-        </ion-textarea>
-      </div>
-    </form>
+  <form [formGroup]="foodDetailsForm">
+    <div class="label-input">
+      <ion-input
+        formControlName="label"
+        label="Enter new label : "
+        labelPlacement="stacked"
+        placeholder="new label"
+        type="text">
+      </ion-input>
+    </div>
+    <div class="description-text">
+      <ion-textarea
+        formControlName="description"
+        label="Enter new description : "
+        labelPlacement="stacked"
+        placeholder="new description">
+      </ion-textarea>
+    </div>
+  </form>
 </ion-content>
