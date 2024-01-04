@@ -1,6 +1,46 @@
-mat-toolbar{
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.mat-card {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
+}
+
+mat-toolbar {
+  display: flex; /* Display toolbar items in a row */
+  justify-content: center;
+  margin: 20px;
+  gap: 20px;
+}
+
+mat-card-title {
+  color: pink; /* Change the title text color */
+}
+
+/* Style the form */
+.form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  border: 2px solid pink; /* Add border to the form */
+  padding: 15px; /* Add padding for space inside the form */
+  border-radius: 10px;
+}
+button {
+  margin: 0 10px; /* Adjust the margin as needed */
+}
+mat-form-field {
+  margin: 10px;
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input.matInput {
+  border: none; /* Remove default input border */
+  padding: 10px;
+  width: 100%;
+  font-size: 16px; /* Increase font size */
 }

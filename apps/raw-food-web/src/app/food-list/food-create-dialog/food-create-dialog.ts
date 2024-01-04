@@ -12,7 +12,7 @@ interface FoodForCreationFormGroupInterface {
 
 @Component({
   templateUrl: './food-create-dialog.html',
-  styleUrl: './food-create-dialog.scss',
+  styleUrls: ['./food-create-dialog.scss'],
 })
 export class FoodCreateDialog {
   public foodForm = new FormGroup<FoodForCreationFormGroupInterface>({
@@ -22,7 +22,7 @@ export class FoodCreateDialog {
 
   constructor(
     public matDialog: MatDialog,
-    public matSnackBar: MatSnackBar,
+    private matSnackBar: MatSnackBar,
     private foodService: FoodsService) {
   }
 
@@ -30,27 +30,17 @@ export class FoodCreateDialog {
     return this.matDialog.closeAll();
   }
 
-
   public async createFood() {
     try {
       const foodFormValue = this.foodForm.value as FoodForCreationInterface;
       await lastValueFrom(this.foodService.createFood(foodFormValue));
       await this.dismissDialog();
-      let snack=this.matSnackBar
-        .open('food created successfully',
-          'Close',{
-            duration: 3000, // Duration in milliseconds, how long the snackbar will be shown
-            horizontalPosition: 'center', // Positioning
-            verticalPosition: 'bottom' // Positioning
-          });
-      snack.onAction().subscribe(() => {
-        console.error('The snackbar action was triggered!');
-      });
-      snack.afterDismissed().subscribe(() => {
-        console.error('The snackbar was dismissed');
-      });
-
+      let snack = this.matSnackBar.open('food created successfully',
+        'Close', {
+          duration: 5000
+        });
     } catch (err) {
+      let snackBar = this.matSnackBar.open('food cannot be created');
       console.error();
     }
   }
