@@ -15,7 +15,6 @@ interface FoodForUpdateFormGroupInterface {
   styleUrls: ['./food-details-dialog.scss'],
 })
 export class FoodDetailsDialog implements OnInit, OnDestroy {
-
   public foodDetailsForm: FormGroup;
   private subscription$ = new Subscription();
 
@@ -59,17 +58,13 @@ export class FoodDetailsDialog implements OnInit, OnDestroy {
     try {
       await lastValueFrom(this.foodService
         .updateFood(this.data.foodId, this.foodDetailsForm.value));
-      let matSnackBar = this.matSnackBar
-        .open('food updated successfully',
-          'Close', {
-            duration: 2000,
-            horizontalPosition: "center",
-            verticalPosition: "top"
-          });
+      this.matSnackBar.open('food updated successfully',
+        'Close', {
+          duration: 2000
+        });
       await this.dismissDialog();
     } catch (err) {
-      let snackBar = this.matSnackBar
-        .open('food cannot be updated');
+      this.matSnackBar.open('food cannot be updated');
       console.error('');
     }
   }
