@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FoodListBase, FoodsService } from "@rawraw/app";
+import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
 import { MatDialog } from "@angular/material/dialog";
 import { FoodCreateDialog } from "./food-create-dialog/food-create-dialog";
 import { FoodDetailsDialog } from "./food-details-dialog/food-details-dialog";
@@ -26,12 +26,15 @@ export class FoodListPage extends FoodListBase {
     this.subscription$.unsubscribe();
   }
 
-  presentAlertDeleteFoodDialog() {
+  presentAlertDeleteFoodDialog(foodId: string) {
     if (!this.isDialogOpen) {
       this.isDialogOpen = true;
       const dialogRef = this.matDialog
         .open(FoodDeleteAlertDialog,
           {
+            data: {
+              foodId: foodId
+            },
             width: '500px',
             height: '300px',
           });
@@ -56,12 +59,15 @@ export class FoodListPage extends FoodListBase {
     }
   }
 
-  presentFoodDetailsDialog() {
+  presentFoodDetailsDialog(foodItemBo: FoodItemBo) {
     if (!this.isDialogOpen) {
       this.isDialogOpen = true;
       const dialogRef = this.matDialog
         .open(FoodDetailsDialog,
           {
+            data: {
+              foodId: foodItemBo.id
+            },
             width: '500px',
             height: '300px',
           });

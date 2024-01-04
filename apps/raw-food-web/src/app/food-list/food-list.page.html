@@ -18,8 +18,8 @@
             <p class="description-text">{{foodItem.description}}</p>
           </div>
           <div class="delete-add-buttons">
-            <button class="delete-button" mat-raised-button (click)="presentAlertDeleteFoodDialog()">delete</button>
-            <button class="edit-button" mat-raised-button (click)="presentFoodDetailsDialog()">edit</button>
+            <button class="delete-button" mat-raised-button (click)="presentAlertDeleteFoodDialog(foodItem.id)">delete</button>
+            <button class="edit-button" mat-raised-button (click)="presentFoodDetailsDialog(foodItem)">edit</button>
           </div>
         </mat-list-item>
       </mat-list>
