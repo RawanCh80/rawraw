@@ -2,14 +2,14 @@ import { FoodItemBo, FoodsService } from "@rawraw/app";
 import { Subscription } from "rxjs";
 
 export abstract class FoodListBase {
-  public foodList: FoodItemBo[] = [];
-  subscription$ = new Subscription();
+  protected foodList: FoodItemBo[] = [];
+  protected subscription$ = new Subscription();
 
-  protected constructor(private foOdService: FoodsService) {
+  protected constructor(protected foodService: FoodsService) {
   }
 
   protected getFoodListSubscription() {
-    const subscription = this.foOdService
+    const subscription = this.foodService
       .getFoods()
       .subscribe(
         (foodList: FoodItemBo[]) => {

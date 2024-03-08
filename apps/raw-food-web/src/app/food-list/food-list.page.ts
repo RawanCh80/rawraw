@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
 import { MatDialog } from "@angular/material/dialog";
 import { FoodCreateDialog } from "./food-create-dialog/food-create-dialog";
@@ -9,12 +9,12 @@ import { FoodDeleteAlertDialog } from "./food-delete-alert-dialog/food-delete-al
   templateUrl: 'food-list.page.html',
   styleUrls: ['food-list.page.scss']
 })
-export class FoodListPage extends FoodListBase {
-  isDialogOpen = false;
+export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
+  private isDialogOpen = false;
 
   constructor(
     private matDialog: MatDialog,
-    protected foodService: FoodsService) {
+    protected override foodService: FoodsService) {
     super(foodService);
   }
 
@@ -26,9 +26,8 @@ export class FoodListPage extends FoodListBase {
     this.subscription$.unsubscribe();
   }
 
-  presentAlertDeleteFoodDialog(foodId: string) {
+  public presentAlertDeleteFoodDialog(foodId: string) {
     if (!this.isDialogOpen) {
-      this.isDialogOpen = true;
       const dialogRef = this.matDialog
         .open(FoodDeleteAlertDialog,
           {
@@ -37,11 +36,9 @@ export class FoodListPage extends FoodListBase {
             },
             height: '300px',
             width: '1000px',
-            position:{
-              top:'-70vh',
-              left:'300px'
-            }
+            hasBackdrop:true
           });
+      this.isDialogOpen = true;
       dialogRef.afterClosed().subscribe(result => {
         this.isDialogOpen = false;
       });
@@ -49,21 +46,17 @@ export class FoodListPage extends FoodListBase {
   }
 
   presentAddFoodDialog() {
-    if (!this.isDialogOpen) {
-      this.isDialogOpen = true;
+
       const dialogRef = this.matDialog
         .open(FoodCreateDialog, {
-            height: '60vh',
-            width: '60vh',
-              position:{
-              top:'-70vh',
-                left:'30vh'
-              }
+          height: '60vh',
+          width: '60vh',
+          hasBackdrop:true
         });
       dialogRef.afterClosed().subscribe(result => {
         this.isDialogOpen = false;
       });
-    }
+
   }
 
   presentFoodDetailsDialog(foodItemBo: FoodItemBo) {
@@ -77,9 +70,9 @@ export class FoodListPage extends FoodListBase {
             },
             height: '60vh',
             width: '60vh',
-            position:{
-              top:'-70vh',
-              left:'30vh'
+            position: {
+              top: '-80vh',
+              left: '30vh'
             }
           });
       dialogRef.afterClosed().subscribe(result => {

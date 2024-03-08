@@ -1,4 +1,3 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 .mat-card {
   display: flex;
@@ -8,18 +7,19 @@
 
 mat-toolbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 20px;
 }
 
 mat-card-title {
   font-size: 60px;
-  color: pink;
+  color: #ff0069;
 }
-.label-field ,.description-filed{
-  font-size: 40px;
 
+.label-field, .description-filed {
+  font-size: 40px;
 }
+
 .form {
   margin: 20px;
   display: flex;
@@ -29,12 +29,14 @@ mat-card-title {
   padding: 15px;
   border-radius: 10px;
 }
+
 button {
   width: auto;
   font-size: 40px;
   margin: 0 10px;
   padding: 40px;
 }
+
 mat-form-field {
   margin: 10px;
   width: 90%;
@@ -42,9 +44,6 @@ mat-form-field {
   border-radius: 5px;
 }
 
-input.matInput {
-  border: none;
-  padding: 10px;
-  width: 80%;
-  font-size: 80px;
+mat-card-content {
+  margin-top: 60px;
 }

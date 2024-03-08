@@ -2,11 +2,11 @@
   <mat-card-header>
     <mat-toolbar>
       <button mat-raised-button (click)="dismissDialog()"
-              color="primary">
+              color="basic">
         Cancel
       </button>
-      <mat-card-title>Welcome</mat-card-title>
-      <button mat-raised-button (click)="updateFood()">
+      <button mat-raised-button (click)="updateFood()"
+              color="accent">
         Update
       </button>
     </mat-toolbar>
@@ -16,15 +16,15 @@
       <mat-form-field class="label-field">
         Enter label
         <input matInput
-               placeholder="label"
-               formControlName="label">
+          placeholder="label"
+          formControlName="label"
+          class="label-input">
       </mat-form-field>
-
       <mat-form-field class="description-filed">
         Enter description
         <input matInput
-               placeholder="description"
-               formControlName="description">
+          placeholder="description"
+          formControlName="description">
       </mat-form-field>
     </form>
   </mat-card-content>
