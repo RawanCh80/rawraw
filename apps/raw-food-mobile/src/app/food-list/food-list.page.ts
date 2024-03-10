@@ -1,20 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from "@ionic/angular";
 import { FoodDetailsModal } from "./food-details-modal/food-details.modal";
 import { FoodCreateModal } from "./food-create-modal/food-create.modal";
-import { lastValueFrom } from "rxjs";
-import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
+import { lastValueFrom, Observable } from "rxjs";
+import { FoodBo, FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
+import { HttpClient } from "@angular/common/http";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../../../../libs/app/src/lib/states/app.state";
+import *as FoodActions from "../../../../../libs/app/src/lib/states/foods/food.action";
+import * as  FoodSelectors  from "../../../../../libs/app/src/lib/states/foods/food.selector";
 
 @Component({
   templateUrl: 'food-list.page.html',
   styleUrls: ['food-list.page.scss'],
 })
 export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
+  http = inject(HttpClient);
+  foodApi = inject(FoodsService);
+  foods: Observable<FoodBo[]>
+  error: Observable<string | null>
+
   constructor(private alertController: AlertController,
               private modalController: ModalController,
               private toastController: ToastController,
-              protected foodService: FoodsService) {
+              protected override foodService: FoodsService,
+              private store: Store<AppState>) {
     super(foodService);
+    this.store.dispatch(FoodActions.loadFood());
+    this.foods=this.store.select(FoodSelectors.selectAllFoods)
   }
 
   ngOnInit(): void {

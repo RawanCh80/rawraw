@@ -1,4 +1,4 @@
-.container {
+.food-list-page {
 
   .food-card {
     width: 500px;
@@ -21,7 +21,7 @@
   }
 
   .title {
-    font-size: 200px;
+    font-size: 20px;
     font-weight: 600;
     background-image: linear-gradient(to left, #d63384, #d66788);
     color: transparent;
@@ -33,7 +33,7 @@
     margin-top: 5px;
     margin-bottom: 5px;
     font-family: cursive;
-    font-size: 80px;
+    font-size: 15px;
   }
 
   .container {
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    font-size: 50px;
+    font-size: 16px;
   }
 
   .add-button {
@@ -63,13 +63,13 @@
   .description-text {
     padding-left: 80px;
     font-family: cursive;
-    font-size: 80px;
+    font-size: 18px;
   }
 
   .label-text {
-    padding-left: 80px;
-    padding-top: 10px;
-    font-size: 120px;
+    padding-left: 10px;
+    padding-top: 30px;
+    font-size: 25px;
     font-weight: 600;
     background-image: linear-gradient(to left, #d63384, #d66788);
     color: transparent;
@@ -78,17 +78,17 @@
   }
 
   .delete-edit-buttons {
-    margin: 50px;
-    font-size: 30px;
+    margin: 10px;
+    font-size: 10px;
     position: absolute;
     bottom: 0;
     right: 0;
   }
 
   .delete-button {
-    margin: 20px;
-    font-size: 40px;
-    padding: 30px;
+    margin: 10px;
+    font-size: 20px;
+    padding: 20px;
   }
 
   .delete-button:hover {
@@ -96,8 +96,8 @@
   }
 
   .edit-button {
-    font-size: 40px;
-    padding: 30px;
-    margin-right: 20px;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
   }
 }
