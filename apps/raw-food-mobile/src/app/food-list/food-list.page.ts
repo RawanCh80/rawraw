@@ -2,13 +2,12 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from "@ionic/angular";
 import { FoodDetailsModal } from "./food-details-modal/food-details.modal";
 import { FoodCreateModal } from "./food-create-modal/food-create.modal";
-import { lastValueFrom, Observable } from "rxjs";
-import { FoodBo, FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
+import { lastValueFrom } from "rxjs";
+import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
 import { HttpClient } from "@angular/common/http";
-import { Store } from "@ngrx/store";
-import { AppState } from "../../../../../libs/app/src/lib/states/app.state";
+import { select, Store } from "@ngrx/store";
 import *as FoodActions from "../../../../../libs/app/src/lib/states/foods/food.action";
-import * as  FoodSelectors  from "../../../../../libs/app/src/lib/states/foods/food.selector";
+import { selectAllFoods } from "../../../../../libs/app/src/lib/states/foods/food.selector";
 
 @Component({
   templateUrl: 'food-list.page.html',
@@ -17,21 +16,24 @@ import * as  FoodSelectors  from "../../../../../libs/app/src/lib/states/foods/f
 export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   http = inject(HttpClient);
   foodApi = inject(FoodsService);
-  foods: Observable<FoodBo[]>
-  error: Observable<string | null>
+  public foodSelected$ = this.store.pipe(select(selectAllFoods));
 
   constructor(private alertController: AlertController,
               private modalController: ModalController,
               private toastController: ToastController,
               protected override foodService: FoodsService,
-              private store: Store<AppState>) {
+              private store: Store) {
     super(foodService);
     this.store.dispatch(FoodActions.loadFood());
-    this.foods=this.store.select(FoodSelectors.selectAllFoods)
   }
 
   ngOnInit(): void {
     this.getFoodListSubscription();
+    this.foodSelected$.subscribe({
+      next: (foodState) => {
+        console.log('...........done');
+      }
+    })
   }
 
   ngOnDestroy(): void {

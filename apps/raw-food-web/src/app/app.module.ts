@@ -18,6 +18,10 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from "@angular/mater
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FoodDetailsDialog } from "./food-list/food-details-dialog/food-details-dialog";
 import { FoodDeleteAlertDialog } from "./food-list/food-delete-alert-dialog/food-delete-alert-dialog";
+import { EffectsModule } from "@ngrx/effects";
+import { FoodEffect } from "../../../../libs/app/src/lib/states/foods/food.effect";
+import { StoreModule } from "@ngrx/store";
+import { foodReducer } from "../../../../libs/app/src/lib/states/foods/foodReducer";
 
 @NgModule({
   declarations: [AppComponent, FoodCreateDialog,FoodDetailsDialog,FoodDeleteAlertDialog],
@@ -36,7 +40,9 @@ import { FoodDeleteAlertDialog } from "./food-list/food-delete-alert-dialog/food
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    EffectsModule.forRoot([FoodEffect]),
+    StoreModule.forRoot({foodReducer})
   ],
   providers: [{
     provide: MAT_DIALOG_DEFAULT_OPTIONS,
@@ -45,7 +51,8 @@ import { FoodDeleteAlertDialog } from "./food-list/food-delete-alert-dialog/food
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {duration: 6000}
-    }],
+    },],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {

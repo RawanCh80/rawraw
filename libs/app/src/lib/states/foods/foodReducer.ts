@@ -11,7 +11,7 @@ export const initialFoodState: FoodState = {
   foods: [],
   error: null
 }
-export const FoodReducer = createReducer(
+export const foodReducer = createReducer(
   initialFoodState,
   on(FoodActions.loadFoodSuccess, (state, {foods}) => ({
     ...state,
