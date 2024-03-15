@@ -5,40 +5,40 @@
 <!--  </div>-->
 <!-- -->
 
-    <mat-card class="food-list-page">
-      <mat-card-header>
-        <mat-card-title class="title text-center">
-          Foodies
-        </mat-card-title>
-        <mat-card-subtitle class="sub-title text-center ">
-          Your way to happiness
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="food-list-container">
-        <mat-list>
-          <mat-list-item *ngFor="let foodItem of foodList"
-                         class="food-list-item">
-            <div>
-              <h3 class="label-text">{{foodItem.label}}</h3>
-              <p class="description-text">{{foodItem.description}}</p>
-            </div>
-            <div class="delete-edit-butt  ons">
-              <button class="delete-button"
-                      mat-raised-button
-                      (click)="presentAlertDeleteFoodDialog(foodItem.id)">
-                delete
-              </button>
-              <button class="edit-button"
-                      mat-raised-button
-                      (click)="presentFoodDetailsDialog(foodItem)">
-                edit
-              </button>
-            </div>
-          </mat-list-item>
-        </mat-list>
-        <div class="button-container">
-          <button class="add-button" mat-raised-button (click)="presentAddFoodDialog()">Add Food</button>
-        </div>
-      </mat-card-content>
-    </mat-card>
+<!--    <mat-card class="food-list-page">-->
+<!--      <mat-card-header>-->
+<!--        <mat-card-title class="title text-center">-->
+<!--          Foodies-->
+<!--        </mat-card-title>-->
+<!--        <mat-card-subtitle class="sub-title text-center ">-->
+<!--          Your way to happiness-->
+<!--        </mat-card-subtitle>-->
+<!--      </mat-card-header>-->
+<!--      <mat-card-content class="food-list-container">-->
+<!--        <mat-list>-->
+<!--          <mat-list-item *ngFor="let foodItem of foodList"-->
+<!--                         class="food-list-item">-->
+<!--            <div>-->
+<!--              <h3 class="label-text">{{foodItem.label}}</h3>-->
+<!--              <p class="description-text">{{foodItem.description}}</p>-->
+<!--            </div>-->
+<!--            <div class="delete-edit-butt  ons">-->
+<!--              <button class="delete-button"-->
+<!--                      mat-raised-button-->
+<!--                      (click)="presentAlertDeleteFoodDialog(foodItem.id)">-->
+<!--                delete-->
+<!--              </button>-->
+<!--              <button class="edit-button"-->
+<!--                      mat-raised-button-->
+<!--                      (click)="presentFoodDetailsDialog(foodItem)">-->
+<!--                edit-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </mat-list-item>-->
+<!--        </mat-list>-->
+<!--        <div class="button-container">-->
+<!--          <button class="add-button" mat-raised-button (click)="presentAddFoodDialog()">Add Food</button>-->
+<!--        </div>-->
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
 <!--</div>-->

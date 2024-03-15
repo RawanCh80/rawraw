@@ -1,30 +1,30 @@
-import { inject, Injectable } from "@angular/core";
-import { FoodsService } from "@rawraw/app";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import * as FoodActions from "./food.action"
-import { catchError, exhaustMap, map, of } from "rxjs";
+import { inject, Injectable } from '@angular/core';
+import { FoodActions, FoodsService } from '@rawraw/app';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, exhaustMap, map, of } from 'rxjs';
 
 @Injectable()
 export class FoodEffect {
-  private api = inject(FoodsService);
-  action = inject(Actions);
   loadFoods = createEffect(() =>
-    this.action.pipe(
+    this.actions$.pipe(
       ofType(FoodActions.loadFood),
       exhaustMap(() => {
-          return this.api
+          return this.foodsService
             .getFoods()
             .pipe(
               map((result) => {
-                return FoodActions.loadFoodSuccess({foods: result})
+                return FoodActions.loadFoodSuccess({ foods: result });
               }),
               catchError((error) =>
-                of(FoodActions.loadFoodFailure({errorMessage: 'Fail to load Foods'})
-                )
+                of(FoodActions.loadFoodFailure({ errorMessage: 'Fail to load Foods' }))
               )
-            )
+            );
         }
       )
     )
   );
+
+  constructor(private actions$: Actions,
+              private foodsService: FoodsService) {
+  }
 }

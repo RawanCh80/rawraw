@@ -1,21 +1,10 @@
-import { FoodItemBo, FoodsService } from "@rawraw/app";
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { selectAllFoods } from '../states/foods/food.selector';
+import { inject } from '@angular/core';
 
 export abstract class FoodListBase {
-  protected foodList: FoodItemBo[] = [];
+  protected store = inject(Store);
   protected subscription$ = new Subscription();
-
-  protected constructor(protected foodService: FoodsService) {
-  }
-
-  protected getFoodListSubscription() {
-    const subscription = this.foodService
-      .getFoods()
-      .subscribe(
-        (foodList: FoodItemBo[]) => {
-          this.foodList = foodList;
-        }
-      );
-    this.subscription$.add(subscription);
-  }
+  public foodSelected$ = this.store.pipe(select(selectAllFoods));
 }

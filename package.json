@@ -1,8 +1,5 @@
 {
-  "name": "@rawraw/source",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {},
+  "name": "@rawraw",
   "private": true,
   "dependencies": {
     "@angular/animations": "17.3.0",
@@ -84,5 +81,7 @@
     "tsconfig-paths": "4.2.0",
     "typescript": "5.4.2",
     "url-loader": "4.1.1"
-  }
+  },
+  "type": "commonjs"
 }
+

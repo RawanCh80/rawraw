@@ -1,27 +1,31 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "strictNullChecks": false,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "strictNullChecks": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "module": "ESNext",
+    "baseUrl": "./",
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "@rawraw/app": [
         "libs/app/src/index.ts"
       ]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "Node"
     }
   },
   "exclude": [

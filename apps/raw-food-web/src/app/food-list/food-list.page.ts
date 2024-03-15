@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FoodItemBo, FoodListBase, FoodsService } from "@rawraw/app";
-import { MatDialog } from "@angular/material/dialog";
-import { FoodCreateDialog } from "./food-create-dialog/food-create-dialog";
-import { FoodDetailsDialog } from "./food-details-dialog/food-details-dialog";
-import { FoodDeleteAlertDialog } from "./food-delete-alert-dialog/food-delete-alert-dialog";
+import { FoodActions, FoodItemBo, FoodListBase } from '@rawraw/app';
+import { MatDialog } from '@angular/material/dialog';
+import { FoodCreateDialog } from './food-create-dialog/food-create-dialog';
+import { FoodDetailsDialog } from './food-details-dialog/food-details-dialog';
+import { FoodDeleteAlertDialog } from './food-delete-alert-dialog/food-delete-alert-dialog';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   templateUrl: 'food-list.page.html',
@@ -13,20 +14,19 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   private isDialogOpen = false;
 
   constructor(
-    private matDialog: MatDialog,
-    protected override foodService: FoodsService) {
-    super(foodService);
+    private matDialog: MatDialog) {
+    super();
   }
 
   ngOnInit(): void {
-    this.getFoodListSubscription();
+    this.store.dispatch(FoodActions.loadFood());
   }
 
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
 
-  public presentAlertDeleteFoodDialog(foodId: string) {
+  public async presentAlertDeleteFoodDialog(foodId: string) {
     if (!this.isDialogOpen) {
       const dialogRef = this.matDialog
         .open(FoodDeleteAlertDialog,
@@ -36,30 +36,26 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
             },
             height: '300px',
             width: '1000px',
-            hasBackdrop:true
+            hasBackdrop: true
           });
       this.isDialogOpen = true;
-      dialogRef.afterClosed().subscribe(result => {
-        this.isDialogOpen = false;
-      });
+      await lastValueFrom(dialogRef.afterClosed());
+      this.isDialogOpen = false;
     }
   }
 
-  presentAddFoodDialog() {
-
-      const dialogRef = this.matDialog
-        .open(FoodCreateDialog, {
-          height: '60vh',
-          width: '60vh',
-          hasBackdrop:true
-        });
-      dialogRef.afterClosed().subscribe(result => {
-        this.isDialogOpen = false;
+  public async presentAddFoodDialog() {
+    const dialogRef = this.matDialog
+      .open(FoodCreateDialog, {
+        height: '60vh',
+        width: '60vh',
+        hasBackdrop: true
       });
-
+    await lastValueFrom(dialogRef.afterClosed());
+    this.isDialogOpen = false;
   }
 
-  presentFoodDetailsDialog(foodItemBo: FoodItemBo) {
+  public async presentFoodDetailsDialog(foodItemBo: FoodItemBo) {
     if (!this.isDialogOpen) {
       this.isDialogOpen = true;
       const dialogRef = this.matDialog
@@ -75,9 +71,8 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
               left: '30vh'
             }
           });
-      dialogRef.afterClosed().subscribe(result => {
-        this.isDialogOpen = false;
-      });
+      await lastValueFrom(dialogRef.afterClosed());
+      this.isDialogOpen = false;
     }
   }
 }
