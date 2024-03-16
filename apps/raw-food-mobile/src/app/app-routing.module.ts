@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'food-list',
-    loadChildren: () => import('./food-list/food-list.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./food-list/food-list.module').then(m => m.FoodListModule)
   },
   {
     path: '',

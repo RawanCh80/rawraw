@@ -2,10 +2,10 @@ import { FoodItemBo } from '@rawraw/app';
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
 export const FoodActions = createActionGroup({
-  source: 'Food',
+  source: 'Foods',
   events: {
-    loadFood: emptyProps(),
-    loadFoodSuccess: props<{ foods: FoodItemBo[] }>(),
-    loadFoodFailure: props<{ errorMessage: string }>()
+    'load Foods': emptyProps(),
+    'load Foods Success': props<{ foods: FoodItemBo[] }>(),
+    'load Foods Failure': props<{ errorMessage: string }>()
   }
 });
