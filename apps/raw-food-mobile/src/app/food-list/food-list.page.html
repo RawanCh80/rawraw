@@ -10,8 +10,7 @@
     </ion-toolbar>
   </ion-header>
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="foodSelected$ | async as foodState">
-    <pre>{{foodState | json}}</pre>
+  <ng-container *ngrxLet="foodSelected$ | async as foodState">
     @if (foodState.status === HttpStatusEnum.loading){
       <ion-spinner></ion-spinner>
     } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){

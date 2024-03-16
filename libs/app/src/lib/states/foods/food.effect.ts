@@ -1,27 +1,32 @@
-import { inject, Injectable } from '@angular/core';
-import { FoodActions, FoodsService } from '@rawraw/app';
+import { Injectable } from '@angular/core';
+import { FoodActions, FoodItemBo, FoodsService } from '@rawraw/app';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 
 @Injectable()
 export class FoodEffect {
-  loadFoods = createEffect(() =>
-    this.actions$.pipe(
-      ofType(FoodActions.loadFood),
-      exhaustMap(() => {
+  public $loadFoods = createEffect(() =>
+    this.actions$
+      .pipe(
+        ofType(FoodActions.loadFoods),
+        exhaustMap(() => {
+          console.log('le effect call');
           return this.foodsService
-            .getFoods()
-            .pipe(
-              map((result) => {
-                return FoodActions.loadFoodSuccess({ foods: result });
-              }),
-              catchError((error) =>
-                of(FoodActions.loadFoodFailure({ errorMessage: 'Fail to load Foods' }))
-              )
-            );
-        }
+              .getFoods()
+              .pipe(
+                map((foodList: FoodItemBo[]) => {
+                  console.log('leeeeeeeee');
+                  return FoodActions.loadFoodsSuccess({ foods: foodList });
+                }),
+                catchError((error) => {
+                    console.log('leeeeeeeee');
+                   return  of(FoodActions.loadFoodsFailure({ errorMessage: 'Fail to load Foods' }))
+                  }
+                )
+              );
+          }
+        )
       )
-    )
   );
 
   constructor(private actions$: Actions,

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FoodState } from './foodReducer';
+import { FOOD_KEY, FoodState } from './food.reducers';
 
-export const selectFoodFeature = createFeatureSelector<FoodState>('food');
+export const selectFoodFeature = createFeatureSelector<FoodState>(FOOD_KEY);
 export const selectAllFoods = createSelector(selectFoodFeature, (state: FoodState) => state);
