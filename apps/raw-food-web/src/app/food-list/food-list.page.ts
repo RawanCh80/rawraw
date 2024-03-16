@@ -19,7 +19,7 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(FoodActions.loadFood());
+    this.store.dispatch(FoodActions.loadFoods());
   }
 
   ngOnDestroy(): void {

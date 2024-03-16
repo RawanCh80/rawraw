@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { FoodListPage } from './food-list/food-list.page';
 
 const routes: Routes = [
   {
     path: 'food-list',
-    loadChildren: () => import('./food-list/food-list.module').then(m => m.FoodListModule)
+    component: FoodListPage
   },
   {
     path: '',

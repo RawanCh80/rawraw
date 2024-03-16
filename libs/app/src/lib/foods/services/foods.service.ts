@@ -21,6 +21,7 @@ export class FoodsService {
       .getFoods()
       .pipe(
         map((foodModels: FoodModel[]) => {
+          console.log('le service');
           return foodModels.map((foodModel: FoodModel) => new FoodItemBo(foodModel));
         })
       );

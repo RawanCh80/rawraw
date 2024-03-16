@@ -19,6 +19,7 @@ export class FoodClient {
   }
 
   public getFoods(): Observable<FoodItemModel[]> {
+    console.log('le client');
     return this.httpClient.get<FoodItemModel[]>(this.baseUrl);
   }
 

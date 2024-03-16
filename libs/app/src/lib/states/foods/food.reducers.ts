@@ -15,21 +15,23 @@ const initialFoodState: FoodState = {
   status: HttpStatusEnum.pending,
   error: null
 };
-
+console.log('initialFoodState', initialFoodState);
 export const foodReducers = createReducer<FoodState, Action>(initialFoodState,
   on(FoodActions.loadFoods, (state: FoodState) => {
+    console.log(state);
     return {
       ...state,
       status: HttpStatusEnum.loading
-    }
+    };
   }),
   on(FoodActions.loadFoodsSuccess, (state: FoodState, { foods }) => {
+    console.log(state);
     return {
       ...state,
       [FOOD_KEY]: foods,
       status: HttpStatusEnum.success,
       error: null
-    }
+    };
   }),
   on(FoodActions.loadFoodsFailure, (state: FoodState, { errorMessage }) => ({
     ...state,

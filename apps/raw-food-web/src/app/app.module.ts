@@ -42,7 +42,7 @@ import { FOOD_KEY, foodReducers } from '@rawraw/app';
     MatInputModule,
     MatSnackBarModule,
     StoreModule.forRoot({ [FOOD_KEY]: foodReducers }),
-    EffectsModule.forRoot([FoodEffect]),
+    EffectsModule.forFeature([FoodEffect]),
   ],
   providers: [{
     provide: MAT_DIALOG_DEFAULT_OPTIONS,

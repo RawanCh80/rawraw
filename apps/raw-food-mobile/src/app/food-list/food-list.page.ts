@@ -1,10 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { AlertController, IonicModule, ModalController, ToastController } from '@ionic/angular';
 import { FoodDetailsModal } from './food-details-modal/food-details.modal';
 import { FoodCreateModal } from './food-create-modal/food-create.modal';
 import { FOOD_KEY, FoodActions, FoodItemBo, FoodListBase, HttpStatusEnum } from '@rawraw/app';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LetDirective } from '@ngrx/component';
 
 @Component({
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    LetDirective
+  ],
   templateUrl: 'food-list.page.html',
   styleUrls: ['food-list.page.scss']
 })
@@ -16,6 +26,7 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    alert('le component');
     this.store.dispatch(FoodActions.loadFoods());
   }
 
@@ -48,7 +59,7 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
                     duration: 2000,
                     position: 'top'
                   });
-                toast.present();
+                await toast.present();
               } catch (err) {
                 console.log(err);
               }

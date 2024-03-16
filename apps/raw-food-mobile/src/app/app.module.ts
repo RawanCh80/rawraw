@@ -20,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    EffectsModule.forRoot([FoodEffect]),
     StoreModule.forRoot({
         [FOOD_KEY]: foodReducers
       },
@@ -30,12 +31,10 @@ import { EffectsModule } from '@ngrx/effects';
           strictStateImmutability: true
         }
       }),
-    EffectsModule.forRoot([FoodEffect])
   ],
   providers: [{
     provide: RouteReuseStrategy,
     useClass: IonicRouteStrategy
-
   }],
   bootstrap: [AppComponent]
 })

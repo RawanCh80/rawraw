@@ -10,14 +10,18 @@ export class FoodEffect {
       .pipe(
         ofType(FoodActions.loadFoods),
         exhaustMap(() => {
-            return this.foodsService
+          console.log('le effect call');
+          return this.foodsService
               .getFoods()
               .pipe(
                 map((foodList: FoodItemBo[]) => {
+                  console.log('leeeeeeeee');
                   return FoodActions.loadFoodsSuccess({ foods: foodList });
                 }),
-                catchError((error) =>
-                  of(FoodActions.loadFoodsFailure({ errorMessage: 'Fail to load Foods' }))
+                catchError((error) => {
+                    console.log('leeeeeeeee');
+                   return  of(FoodActions.loadFoodsFailure({ errorMessage: 'Fail to load Foods' }))
+                  }
                 )
               );
           }
