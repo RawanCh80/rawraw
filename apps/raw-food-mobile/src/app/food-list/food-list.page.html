@@ -10,62 +10,61 @@
     </ion-toolbar>
   </ion-header>
 <ion-content [fullscreen]="true">
-  z<pre>{{foodSelected$ | async | json}}</pre>z
-<!--  <ng-container *ngrxLet="foodSelected$ | async as foodState">-->
-<!--    @if (foodState.status === HttpStatusEnum.loading){-->
-<!--      <ion-spinner></ion-spinner>-->
-<!--    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){-->
-<!--      <ion-label class="ion-text-center">-->
-<!--        No food items found-->
-<!--      </ion-label>-->
-<!--      <ion-button (click)="presentAddFoodModal()"-->
-<!--                  expand="block">-->
-<!--        Add Food-->
-<!--      </ion-button>-->
-<!--    } @else if (foodState.status === HttpStatusEnum.error){-->
-<!--      <ion-label class="ion-text-center">-->
-<!--        {{ foodState.error }}-->
-<!--      </ion-label>-->
-<!--    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){-->
-<!--      Oh no!! We need food!  Click the button to add some food-->
+  <ng-container *ngrxLet="foodSelected$ | async as foodState">
+    @if (foodState.status === HttpStatusEnum.loading){
+      <ion-spinner></ion-spinner>
+    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){
+      <ion-label class="ion-text-center">
+        No food items found
+      </ion-label>
+      <ion-button (click)="presentAddFoodModal()"
+                  expand="block">
+        Add Food
+      </ion-button>
+    } @else if (foodState.status === HttpStatusEnum.error){
+      <ion-label class="ion-text-center">
+        {{ foodState.error }}
+      </ion-label>
+    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){
+      Oh no!! We need food!  Click the button to add some food
 
-<!--    } @else {-->
-<!--      <ion-fab vertical="bottom"-->
-<!--               horizontal="end"-->
-<!--               slot="fixed">-->
-<!--        <ion-fab-button (click)="presentAddFoodModal()">-->
-<!--          <ion-icon name="create-outline"></ion-icon>-->
-<!--        </ion-fab-button>-->
-<!--      </ion-fab>-->
-<!--      <ion-card *ngFor="let foodItem of foodState[FOOD_KEY]">-->
-<!--        <ion-card-header>-->
-<!--          <ion-card-title class="label-text">-->
-<!--            {{ foodItem.label }}-->
-<!--          </ion-card-title>-->
-<!--        </ion-card-header>-->
-<!--        <ion-card-content>-->
-<!--          <ion-list class="description">-->
-<!--            <ion-item class="description-item"-->
-<!--                      lines="none">-->
-<!--              <ion-label class="description-text">-->
-<!--                {{ foodItem.description }}-->
-<!--              </ion-label>-->
-<!--              <ion-button-->
-<!--                (click)="presentAlertDeleteFood(foodItem.id)">-->
-<!--                Delete-->
-<!--              </ion-button>-->
-<!--              <ion-button (click)="presentFoodDetailsModal(foodItem)"-->
-<!--                          expand="block">-->
-<!--                Edit-->
-<!--              </ion-button>-->
-<!--            </ion-item>-->
-<!--          </ion-list>-->
-<!--        </ion-card-content>-->
-<!--      </ion-card>-->
-<!--      <ion-button (click)="presentAddFoodModal()"-->
-<!--                  expand="block">-->
-<!--        Add Food-->
-<!--      </ion-button>-->
-<!--    }-->
-<!--  </ng-container>-->
+    } @else {
+      <ion-fab vertical="bottom"
+               horizontal="end"
+               slot="fixed">
+        <ion-fab-button (click)="presentAddFoodModal()">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-card *ngFor="let foodItem of foodState[FOOD_KEY]">
+        <ion-card-header>
+          <ion-card-title class="label-text">
+            {{ foodItem.label }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list class="description">
+            <ion-item class="description-item"
+                      lines="none">
+              <ion-label class="description-text">
+                {{ foodItem.description }}
+              </ion-label>
+              <ion-button
+                (click)="presentAlertDeleteFood(foodItem.id)">
+                Delete
+              </ion-button>
+              <ion-button (click)="presentFoodDetailsModal(foodItem)"
+                          expand="block">
+                Edit
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-button (click)="presentAddFoodModal()"
+                  expand="block">
+        Add Food
+      </ion-button>
+    }
+  </ng-container>
 </ion-content>

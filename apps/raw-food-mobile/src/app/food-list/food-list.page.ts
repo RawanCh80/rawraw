@@ -1,11 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, IonicModule, ModalController, ToastController } from '@ionic/angular';
 import { FoodDetailsModal } from './food-details-modal/food-details.modal';
 import { FoodCreateModal } from './food-create-modal/food-create.modal';
-import { FOOD_KEY, FoodActions, FoodItemBo, FoodListBase, HttpStatusEnum } from '@rawraw/app';
+import { FOOD_KEY, FoodActions, FoodItemBo, FoodListBase, HttpStatusEnum, selectAllFoods } from '@rawraw/app';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LetDirective } from '@ngrx/component';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   standalone: true,
@@ -19,14 +20,13 @@ import { LetDirective } from '@ngrx/component';
   styleUrls: ['food-list.page.scss']
 })
 export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
-  constructor(private alertController: AlertController,
-              private modalController: ModalController,
-              private toastController: ToastController) {
-    super();
-  }
+  private alertController = inject(AlertController);
+  private modalController = inject(ModalController);
+  private toastController = inject(ToastController);
+  protected store = inject(Store);
+  public foodSelected$ = this.store.pipe(select(selectAllFoods));
 
   ngOnInit(): void {
-    alert('le component');
     this.store.dispatch(FoodActions.loadFoods());
   }
 

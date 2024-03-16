@@ -9,7 +9,8 @@ import { FoodDetailsModal } from './food-list/food-details-modal/food-details.mo
 import { ReactiveFormsModule } from '@angular/forms';
 import { FoodCreateModal } from './food-list/food-create-modal/food-create.modal';
 import { StoreModule } from '@ngrx/store';
-import { FOOD_KEY, FoodEffect, foodReducers } from '@rawraw/app';
+import { FOOD_KEY, FoodEffect, foodReducers, provideBootstrapEffects } from '@rawraw/app';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
@@ -20,7 +21,11 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    EffectsModule.forRoot([FoodEffect]),
+    StoreDevtoolsModule.instrument({
+      name: 'RawRawFood',
+      maxAge: 25
+    }),
+    EffectsModule.forRoot([]),
     StoreModule.forRoot({
         [FOOD_KEY]: foodReducers
       },
@@ -30,12 +35,15 @@ import { EffectsModule } from '@ngrx/effects';
           strictActionImmutability: true,
           strictStateImmutability: true
         }
-      }),
+      })
   ],
-  providers: [{
-    provide: RouteReuseStrategy,
-    useClass: IonicRouteStrategy
-  }],
+  providers: [
+    provideBootstrapEffects([FoodEffect]),
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
