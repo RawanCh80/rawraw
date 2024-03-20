@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { FOOD_KEY, FoodEffect, foodReducers, provideBootstrapEffects } from '@rawraw/app';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { FOOD_DETAILS_KEY, foodDetailsReducers } from "@rawraw/app";
 
 @NgModule({
   declarations: [AppComponent, FoodDetailsModal, FoodCreateModal],
@@ -27,7 +28,8 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     EffectsModule.forRoot([]),
     StoreModule.forRoot({
-        [FOOD_KEY]: foodReducers
+        [FOOD_KEY]: foodReducers,
+        [FOOD_DETAILS_KEY]: foodDetailsReducers
       },
       {
         runtimeChecks: {

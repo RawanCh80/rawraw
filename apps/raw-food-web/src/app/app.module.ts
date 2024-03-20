@@ -19,12 +19,12 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FoodDetailsDialog } from "./food-list/food-details-dialog/food-details-dialog";
 import { FoodDeleteAlertDialog } from "./food-list/food-delete-alert-dialog/food-delete-alert-dialog";
 import { EffectsModule } from "@ngrx/effects";
-import { FoodEffect } from '@rawraw/app';
+import { FOOD_KEY, FoodEffect, foodReducers } from '@rawraw/app';
 import { StoreModule } from "@ngrx/store";
-import { FOOD_KEY, foodReducers } from '@rawraw/app';
+import { FOOD_DETAILS_KEY, foodDetailsReducers } from "../../../../libs/app/src/lib/states/foods/food-details.reducer";
 
 @NgModule({
-  declarations: [AppComponent, FoodCreateDialog,FoodDetailsDialog,FoodDeleteAlertDialog],
+  declarations: [AppComponent, FoodCreateDialog, FoodDetailsDialog, FoodDeleteAlertDialog],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
@@ -41,7 +41,8 @@ import { FOOD_KEY, foodReducers } from '@rawraw/app';
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    StoreModule.forRoot({ [FOOD_KEY]: foodReducers }),
+    StoreModule.forRoot({[FOOD_KEY]: foodReducers}),
+    StoreModule.forRoot({[FOOD_DETAILS_KEY]: foodDetailsReducers}),
     EffectsModule.forFeature([FoodEffect]),
   ],
   providers: [{
