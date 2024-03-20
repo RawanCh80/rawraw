@@ -1,4 +1,4 @@
-import { FoodState } from "./foods/food.reducers";
+import { FoodState } from "@rawraw/app";
 
 export interface AppState {
   food: FoodState;
