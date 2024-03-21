@@ -16,6 +16,8 @@ export * from './lib/states/foods/food.action';
 export * from './lib/states/foods/food.selector';
 export * from './lib/states/foods/food.effect';
 export * from './lib/states/foods/food.reducers';
+export * from './lib/states/foods/food-details.reducer';
 export * from './lib/states/enums/http-status.enum';
+export * from './lib/states/enums/food-details-status.enum';
 
 export * from './lib/utils';
