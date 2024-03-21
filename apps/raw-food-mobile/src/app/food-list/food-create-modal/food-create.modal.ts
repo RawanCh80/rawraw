@@ -62,6 +62,15 @@ export class FoodCreateModal implements OnInit, OnDestroy {
               await toast.present();
               await this.dismissModal();
             }
+            if (foodDetailsState.status === FoodDetailsStatusEnum.createError) {
+              const toast = await this.toastController
+                .create({
+                  message: 'food cannot be created ',
+                  duration: 2000,
+                  position: 'top'
+                })
+              await toast.present();
+            }
           }
         }
       )
