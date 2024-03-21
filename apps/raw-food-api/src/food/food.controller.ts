@@ -29,11 +29,13 @@ export class FoodController {
 	@Put(':foodId')
 	update(@Param('foodId') foodId: string,
 	       @Body() updateFoodDto: UpdateFoodDto) {
+    console.log('ediitng my food');
 		return this.foodService.updateFood(foodId, updateFoodDto);
 	}
 
 	@Delete(':foodId')
 	remove(@Param('foodId') foodId: string) {
+    console.log('deleting my food');
 		return this.foodService.deleteFood(foodId);
 	}
 }
