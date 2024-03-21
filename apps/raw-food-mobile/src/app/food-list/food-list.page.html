@@ -1,33 +1,30 @@
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title class="title ion-text-center"
-                 size="large">
-        Foodies
-      </ion-title>
-      <ion-label class="ion-text-center sub-title">
-        Your way to happiness
-      </ion-label>
-    </ion-toolbar>
-  </ion-header>
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title class="title ion-text-center"
+               size="large">
+      Foodies
+    </ion-title>
+    <ion-label class="ion-text-center sub-title">
+      Your way to happiness
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <ng-container *ngrxLet="foodSelected$ | async as foodState">
-    @if (foodState.status === HttpStatusEnum.loading){
+  <ng-container *ngrxLet="foodListSelected$ | async as foodState">
+    @if (foodState.status === HttpStatusEnum.loading) {
       <ion-spinner></ion-spinner>
-    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){
+    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0) {
       <ion-label class="ion-text-center">
-        No food items found
+        Oh no!! We need food! Click the button to add some food
       </ion-label>
       <ion-button (click)="presentAddFoodModal()"
                   expand="block">
         Add Food
       </ion-button>
-    } @else if (foodState.status === HttpStatusEnum.error){
+    } @else if (foodState.status === HttpStatusEnum.error) {
       <ion-label class="ion-text-center">
         {{ foodState.error }}
       </ion-label>
-    } @else if (foodState.status === HttpStatusEnum.success && foodState[FOOD_KEY].length === 0){
-      Oh no!! We need food!  Click the button to add some food
-
     } @else {
       <ion-fab vertical="bottom"
                horizontal="end"
