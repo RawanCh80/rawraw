@@ -5,6 +5,7 @@ import { FoodCreateDialog } from './food-create-dialog/food-create-dialog';
 import { FoodDetailsDialog } from './food-details-dialog/food-details-dialog';
 import { FoodDeleteAlertDialog } from './food-delete-alert-dialog/food-delete-alert-dialog';
 import { lastValueFrom } from 'rxjs';
+import { Store } from "@ngrx/store";
 
 @Component({
   templateUrl: 'food-list.page.html',
@@ -14,6 +15,7 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   private isDialogOpen = false;
 
   constructor(
+    private store: Store,
     private matDialog: MatDialog) {
     super();
   }
