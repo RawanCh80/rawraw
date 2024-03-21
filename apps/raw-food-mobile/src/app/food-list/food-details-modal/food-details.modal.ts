@@ -1,8 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, ToastController } from "@ionic/angular";
 import { FormControl, FormGroup } from "@angular/forms";
-import { FoodBo, FoodsService } from "@rawraw/app";
-import { lastValueFrom, Subscription } from "rxjs";
+import { FoodActions, FoodDetailsStatusEnum, FoodItemBo, selectFoodDetails } from "@rawraw/app";
+import { Subscription } from "rxjs";
+import { select, Store } from "@ngrx/store";
 
 interface FoodForUpdateFormGroupInterface {
   label: FormControl<string>;
@@ -15,13 +16,14 @@ interface FoodForUpdateFormGroupInterface {
 })
 
 export class FoodDetailsModal implements OnInit, OnDestroy {
-  @Input() foodId: string;
+  @Input() food: FoodItemBo;
   public foodDetailsForm: FormGroup;
   private subscription$ = new Subscription();
+  protected store = inject(Store);
+  public foodDetailsSelected$ = this.store.pipe(select(selectFoodDetails));
 
   constructor(private modalController: ModalController,
-              private toastController: ToastController,
-              private foodService: FoodsService) {
+              private toastController: ToastController) {
     this.foodDetailsForm = new FormGroup<FoodForUpdateFormGroupInterface>({
         label: new FormControl(''),
         description: new FormControl('')
@@ -30,43 +32,62 @@ export class FoodDetailsModal implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getFoodSubscription();
+    this.foodSelectorSubscription();
+    this.store.dispatch(FoodActions.loadFoodDetails({
+      foodId: this.food.id,
+    }));
   }
 
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
 
-  public getFoodSubscription() {
-    const subscription = this.foodService
-      .getFood(this.foodId)
-      .subscribe((foodBo: FoodBo) => {
-        this.foodDetailsForm.patchValue({
-          label: foodBo.label,
-          description: foodBo.description
-        })
-      });
-    this.subscription$.add(subscription);
-  }
-
   async dismissModal() {
     return this.modalController.dismiss(null, 'cancel');
   }
 
-  async updateFood() {
-    try {
-      await lastValueFrom(this.foodService
-        .updateFood(this.foodId, this.foodDetailsForm.value));
-      const toast = await this.toastController
-        .create({
-          message: 'food updated successfully',
-          duration: 2000,
-          position: 'top'
-        })
-      toast.present();
-      await this.dismissModal();
-    } catch (err) {
-      console.log(err);
-    }
+  private foodSelectorSubscription() {
+    this.subscription$.add(
+      this.foodDetailsSelected$.subscribe({
+          next: async (foodDetailsState) => {
+            if (foodDetailsState.status === FoodDetailsStatusEnum.loadSuccess) {
+              this.foodDetailsForm.patchValue({
+                label: this.food.label,
+                description: this.food.description
+              });
+            }
+            if (foodDetailsState.status === FoodDetailsStatusEnum.updateSuccess) {
+              const toast = await this.toastController
+                .create({
+                  message: 'food updated successfully',
+                  duration: 2000,
+                  position: 'top'
+                })
+              await toast.present();
+              await this.dismissModal();
+            }
+
+            if (foodDetailsState.status === FoodDetailsStatusEnum.updateError) {
+              const toast = await this.toastController
+                .create({
+                  message: 'food cant be updated',
+                  duration: 2000,
+                  position: 'top'
+                })
+              await toast.present();
+            }
+          }
+        }
+      )
+    );
+  }
+
+  public dispatchUpdateFood() {
+    this.store.dispatch(FoodActions.updateFood({
+          foodId: this.food.id,
+          foodFormDetailsValue: this.foodDetailsForm.value
+        }
+      )
+    );
   }
 }
