@@ -6,7 +6,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
-import { FoodListModule } from "./food-list/food-list.module";
 import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
 import { FoodCreateDialog } from "./food-list/food-create-dialog/food-create-dialog";
 import { MatButtonModule } from "@angular/material/button";
@@ -19,9 +18,17 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FoodDetailsDialog } from "./food-list/food-details-dialog/food-details-dialog";
 import { FoodDeleteAlertDialog } from "./food-list/food-delete-alert-dialog/food-delete-alert-dialog";
 import { EffectsModule } from "@ngrx/effects";
-import { FOOD_KEY, FoodEffect, foodReducers } from '@rawraw/app';
+import {
+  FOOD_DETAILS_KEY,
+  FOOD_KEY,
+  foodDetailsReducers,
+  FoodEffect,
+  foodReducers,
+  provideBootstrapEffects
+} from '@rawraw/app';
 import { StoreModule } from "@ngrx/store";
-import { FOOD_DETAILS_KEY, foodDetailsReducers } from "../../../../libs/app/src/lib/states/foods/food-details.reducer";
+import { RouteReuseStrategy } from "@angular/router";
+import { IonicRouteStrategy } from "@ionic/angular";
 
 @NgModule({
   declarations: [AppComponent, FoodCreateDialog, FoodDetailsDialog, FoodDeleteAlertDialog],
@@ -32,7 +39,6 @@ import { FOOD_DETAILS_KEY, foodDetailsReducers } from "../../../../libs/app/src/
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FoodListModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
@@ -41,9 +47,20 @@ import { FOOD_DETAILS_KEY, foodDetailsReducers } from "../../../../libs/app/src/
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    StoreModule.forRoot({[FOOD_KEY]: foodReducers}),
-    StoreModule.forRoot({[FOOD_DETAILS_KEY]: foodDetailsReducers}),
-    EffectsModule.forFeature([FoodEffect]),
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({
+      [FOOD_KEY]: foodReducers,
+      [FOOD_DETAILS_KEY]: foodDetailsReducers
+    }, {
+      runtimeChecks: {
+        strictActionTypeUniqueness: true,
+        strictActionImmutability: true,
+        strictStateImmutability: true
+      }
+    })
+    // StoreModule.forRoot({[FOOD_KEY]: foodReducers}),
+    // StoreModule.forRoot({[FOOD_DETAILS_KEY]: foodDetailsReducers}),
+    // EffectsModule.forFeature([FoodEffect]),
   ],
   providers: [{
     provide: MAT_DIALOG_DEFAULT_OPTIONS,
@@ -52,7 +69,13 @@ import { FOOD_DETAILS_KEY, foodDetailsReducers } from "../../../../libs/app/src/
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {duration: 6000}
-    },],
+    },
+    provideBootstrapEffects([FoodEffect]),
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    }
+  ],
 
   bootstrap: [AppComponent],
 })
