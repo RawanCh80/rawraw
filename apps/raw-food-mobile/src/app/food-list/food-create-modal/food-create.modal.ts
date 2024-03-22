@@ -41,11 +41,12 @@ export class FoodCreateModal implements OnInit, OnDestroy {
     return this.modalController.dismiss(null, 'cancel');
   }
 
-  public async createFood() {
+  public async dispatchCreateFood() {
     const foodFormValue = this.foodForm.value as FoodForCreationInterface;
     this.store.dispatch(FoodActions.createFood({
-      food: foodFormValue
-    }));
+        food: foodFormValue
+      })
+    );
   }
 
   private foodSelectorSubscription() {
