@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
-import { FoodForCreationInterface, FoodsService } from "@rawraw/app";
+import { FoodActions, FoodDetailsStatusEnum, FoodForCreationInterface, selectFoodDetails } from "@rawraw/app";
 import { MatDialog } from "@angular/material/dialog";
-import { lastValueFrom } from "rxjs";
+import { Subscription } from "rxjs";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { select, Store } from "@ngrx/store";
 
 interface FoodForCreationFormGroupInterface {
   label: FormControl<string>;
@@ -15,35 +16,55 @@ interface FoodForCreationFormGroupInterface {
   styleUrls: ['./food-create-dialog.scss'],
 })
 
-export class FoodCreateDialog {
+export class FoodCreateDialog implements OnInit, OnDestroy {
   public foodForm = new FormGroup<FoodForCreationFormGroupInterface>({
     label: new FormControl('', {nonNullable: true}),
     description: new FormControl('', {nonNullable: true})
   });
+  private subscription$ = new Subscription();
+  public foodDetailsSelected$ = this.store.pipe(select(selectFoodDetails));
 
   constructor(
     public matDialog: MatDialog,
     private matSnackBar: MatSnackBar,
-    private foodService: FoodsService) {
+    protected store: Store) {
+  }
+
+  ngOnInit(): void {
+    this.foodSelectorSubscription();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
   }
 
   public async dismissDialog() {
     return this.matDialog.closeAll();
   }
 
-  public async createFood() {
-    try {
-      const foodFormValue = this.foodForm.value as FoodForCreationInterface;
-      await lastValueFrom(this.foodService.createFood(foodFormValue));
-      await this.dismissDialog();
-      this.matSnackBar.open('food created successfully',
-        'Close', {
-          duration: 3000
-        },
-      );
-    } catch (err) {
-      this.matSnackBar.open('food cannot be created');
-      console.error();
-    }
+  public async dispatchCreateFood() {
+    const foodFormValue = this.foodForm.value as FoodForCreationInterface;
+    this.store.dispatch(FoodActions.createFood({food: foodFormValue}))
+  }
+
+  private foodSelectorSubscription() {
+    this.subscription$.add(
+      this.foodDetailsSelected$.subscribe({
+        next: async (foodDetailsState) => {
+          if (foodDetailsState.status === FoodDetailsStatusEnum.createSuccess) {
+
+            this.matSnackBar.open('food created successfully',
+              'Close', {
+                duration: 3000
+              }
+            );
+            await this.dismissDialog();
+          }
+          if (foodDetailsState.status === FoodDetailsStatusEnum.createError) {
+            this.matSnackBar.open('food cannot be created');
+          }
+        }
+      })
+    )
   }
 }
