@@ -34,8 +34,9 @@ export class FoodDetailsModal implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.foodSelectorSubscription();
     this.store.dispatch(FoodActions.loadFoodDetails({
-      foodId: this.food.id,
-    }));
+        foodId: this.food.id,
+      })
+    );
   }
 
   ngOnDestroy(): void {
@@ -62,18 +63,17 @@ export class FoodDetailsModal implements OnInit, OnDestroy {
                   message: 'food updated successfully',
                   duration: 2000,
                   position: 'top'
-                })
+                });
               await toast.present();
               await this.dismissModal();
             }
-
             if (foodDetailsState.status === FoodDetailsStatusEnum.updateError) {
               const toast = await this.toastController
                 .create({
                   message: 'food cant be updated',
                   duration: 2000,
                   position: 'top'
-                })
+                });
               await toast.present();
             }
           }
