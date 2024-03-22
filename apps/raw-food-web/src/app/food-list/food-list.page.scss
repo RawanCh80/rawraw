@@ -1,9 +1,7 @@
-.food-list-page {
+.container {
 
   .food-card {
-    width: 500px;
     margin: auto;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
@@ -21,7 +19,11 @@
   }
 
   .title {
-    font-size: 20px;
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 70px;
     font-weight: 600;
     background-image: linear-gradient(to left, #d63384, #d66788);
     color: transparent;
@@ -30,22 +32,13 @@
   }
 
   .sub-title {
+    display: flex;
+    justify-content: center;
+    align-items:center;
     margin-top: 5px;
     margin-bottom: 5px;
     font-family: cursive;
-    font-size: 15px;
-  }
-
-  .container {
-    height: 100%;
-    background-color: #f5f5f5;
-  }
-
-  mat-card-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    font-size: 30px;
   }
 
   .button-container {
@@ -53,23 +46,25 @@
     justify-content: center;
     margin-top: 10px;
     font-size: 16px;
-  }
 
-  .add-button {
-    padding: 50px;
-    width: 100%;
-  }
 
+    .add-button {
+      font-size: 20px;
+      padding: 30px;
+      width: 100%;
+      color: #ff0069;
+    }
+  }
   .description-text {
-    padding-left: 80px;
+    padding-left: 20px;
     font-family: cursive;
-    font-size: 18px;
+    font-size: 25px;
   }
 
   .label-text {
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 30px;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: 600;
     background-image: linear-gradient(to left, #d63384, #d66788);
     color: transparent;
