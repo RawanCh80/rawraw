@@ -1,5 +1,6 @@
 
 .mat-card {
+  font-size: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +13,7 @@ mat-toolbar {
 }
 
 .label-field, .description-filed {
-  font-size: 40px;
+  font-size: 100px;
 
 }
 
@@ -28,9 +29,9 @@ mat-toolbar {
 
 button {
   width: auto;
-  font-size: 40px;
+  font-size: 25px;
   margin: 0 10px;
-  padding: 40px;
+  padding: 15px;
 }
 
 mat-form-field {
@@ -38,6 +39,7 @@ mat-form-field {
   width: 90%;
   padding: 10px;
   border-radius: 5px;
+  font-size: 50px;
 }
 
 input.matInput {
