@@ -1,12 +1,13 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, ToastController } from "@ionic/angular";
-import { FormControl } from "@angular/forms";
-import { FOOD_DETAILS_KEY, FoodActions, FoodDetailsBase, FoodDetailsStatusEnum, FoodItemBo } from "@rawraw/app";
-
-interface FoodForUpdateFormGroupInterface {
-  label: FormControl<string>;
-  description: FormControl<string>;
-}
+import {
+  FOOD_DETAILS_KEY,
+  FoodActions,
+  FoodDetailsBase,
+  FoodDetailsStatusEnum,
+  FoodForCreationInterface,
+  FoodItemBo
+} from "@rawraw/app";
 
 @Component({
   templateUrl: './food-details.modal.html',
@@ -15,18 +16,22 @@ interface FoodForUpdateFormGroupInterface {
 
 export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestroy {
   @Input() food: FoodItemBo;
+  @Input() isEditMode: boolean;
+  private modalController = inject(ModalController);
+  private toastController = inject(ToastController);
 
-  constructor(private modalController: ModalController,
-              private toastController: ToastController) {
+  constructor() {
     super();
   }
 
   public ngOnInit(): void {
     this.foodSelectorSubscription();
-    this.store.dispatch(FoodActions.loadFoodDetails({
-        foodId: this.food.id,
-      })
-    );
+    if (this?.isEditMode) {
+      this.store.dispatch(FoodActions.loadFoodDetails({
+          foodId: this.food.id,
+        })
+      );
+    }
   }
 
   public ngOnDestroy(): void {
@@ -34,6 +39,7 @@ export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestr
   }
 
   protected async dismissModal() {
+    this.store.dispatch(FoodActions.resetFoodDetailsStatus());
     return this.modalController.dismiss(null, 'cancel');
   }
 
@@ -43,6 +49,14 @@ export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestr
           foodFormDetailsValue: this.foodDetailsForm.value
         }
       )
+    );
+  }
+
+  public async dispatchCreateFood() {
+    const foodFormValue = this.foodDetailsForm.value as FoodForCreationInterface;
+    this.store.dispatch(FoodActions.createFood({
+        food: foodFormValue
+      })
     );
   }
 
@@ -73,6 +87,25 @@ export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestr
                   duration: 2000,
                   position: 'top'
                 });
+              await toast.present();
+            }
+            if (foodDetailsState.status === FoodDetailsStatusEnum.createSuccess) {
+              const toast = await this.toastController
+                .create({
+                  message: 'food created successfully',
+                  duration: 2000,
+                  position: 'top'
+                })
+              await toast.present();
+              await this.dismissModal();
+            }
+            if (foodDetailsState.status === FoodDetailsStatusEnum.createError) {
+              const toast = await this.toastController
+                .create({
+                  message: 'food cannot be created ',
+                  duration: 2000,
+                  position: 'top'
+                })
               await toast.present();
             }
           }
