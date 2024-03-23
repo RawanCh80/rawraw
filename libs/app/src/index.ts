@@ -11,6 +11,7 @@ export * from './lib/foods/services/foods.service';
 export * from './lib/foods/interfaces/food-for-creation.interface';
 export * from './lib/foods/interfaces/food-for-updated.interface';
 export * from './lib/food-list-base/foodList.base';
+export * from './lib/food-details-base/foodDetails.base';
 
 export * from './lib/states/foods/food.action';
 export * from './lib/states/foods/food.selector';
