@@ -57,9 +57,10 @@ export const foodDetailsReducers = createReducer<FoodDetailsState, Action>(initi
       }
     }
   )
-  , on(FoodActions.loadFoodDetailsSuccess, (state,) => {
+  , on(FoodActions.loadFoodDetailsSuccess, (state: FoodDetailsState, {food}) => {
       return {
         ...state,
+        [FOOD_DETAILS_KEY]: food,
         status: FoodDetailsStatusEnum.loadSuccess,
         error: null
       }
