@@ -1,10 +1,27 @@
-<ion-header>
+<ion-header *ngIf="isEditMode">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="dismissModal()" color="medium">Cancel</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="dispatchUpdateFood()" [strong]="true">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header *ngIf="!isEditMode">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()"
+                  color="medium">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Welcome</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dispatchCreateFood()"
+                  [strong]="true">
+        Create
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -29,3 +46,5 @@
     </div>
   </form>
 </ion-content>
+
+
