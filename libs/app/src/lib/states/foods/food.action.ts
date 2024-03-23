@@ -1,12 +1,12 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { FoodItemBo } from '../../foods/bos/food-item.bo';
-import { FoodForUpdatedDto } from "../../foods/dto/food-for-updated.dto";
 import { FoodForUpdateInterface } from "../../foods/interfaces/food-for-updated.interface";
 import { FoodForCreationInterface } from "../../foods/interfaces/food-for-creation.interface";
 
 export const FoodActions = createActionGroup({
   source: 'Foods',
   events: {
+    'reset Food Details Status': emptyProps(),
     'create Food': props<{ food: FoodForCreationInterface }>(),
     'create Food Success': emptyProps(),
     'create Food Failure': props<{ errorMessage: string }>(),
