@@ -71,7 +71,7 @@ ngAfterViewInit(){
       .open(FoodDetailsDialog,
         {
           data: {
-            food: foodItemBo
+            foodId: foodItemBo.id
           },
           height: '500px',
           width: '500px',
