@@ -16,6 +16,15 @@ const initialFoodDetailsState: FoodDetailsState = {
   error: null
 };
 export const foodDetailsReducers = createReducer<FoodDetailsState, Action>(initialFoodDetailsState
+
+  , on(FoodActions.resetFoodDetailsStatus, (state,) => {
+      return {
+        ...state,
+        status: FoodDetailsStatusEnum.pending,
+        error: null
+      }
+    }
+  )
   , on(FoodActions.createFood, (state,) => {
       return {
         ...state,
