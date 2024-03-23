@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FoodDetailsModal } from './food-list/food-details-modal/food-details.modal';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FoodCreateModal } from './food-list/food-create-modal/food-create.modal';
 import { StoreModule } from '@ngrx/store';
 import {
   FOOD_DETAILS_KEY,
@@ -19,9 +18,10 @@ import {
 } from '@rawraw/app';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { MatCard } from "@angular/material/card";
 
 @NgModule({
-  declarations: [AppComponent, FoodDetailsModal, FoodCreateModal],
+  declarations: [AppComponent, FoodDetailsModal],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -44,6 +44,7 @@ import { EffectsModule } from '@ngrx/effects';
       maxAge: 25
     }),
     EffectsModule.forRoot([]),
+    MatCard,
   ],
   providers: [
     provideBootstrapEffects([FoodEffect]),
