@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header *ngIf="data?.isEditMode">
     <mat-toolbar>
       <button mat-raised-button (click)="dismissModal()"
               color="basic">
@@ -11,20 +11,32 @@
       </button>
     </mat-toolbar>
   </mat-card-header>
+  <mat-card-header *ngIf="!data?.isEditMode">
+    <mat-toolbar>
+      <button mat-raised-button (click)="dismissModal()"
+              color="basic">
+        Cancel
+      </button>
+      <button mat-raised-button (click)="dispatchCreateFood()"
+              color="accent">
+        Create
+      </button>
+    </mat-toolbar>
+  </mat-card-header>
   <mat-card-content>
     <form [formGroup]="foodDetailsForm" class="form">
       <mat-form-field class="label-field">
         Enter label
         <input matInput
-          placeholder="label"
-          formControlName="label"
-          class="label-input">
+               placeholder="label"
+               formControlName="label"
+               class="label-input">
       </mat-form-field>
       <mat-form-field class="description-filed">
         Enter description
         <input matInput
-          placeholder="description"
-          formControlName="description">
+               placeholder="description"
+               formControlName="description">
       </mat-form-field>
     </form>
   </mat-card-content>
