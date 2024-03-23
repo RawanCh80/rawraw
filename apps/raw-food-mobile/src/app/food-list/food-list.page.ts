@@ -1,14 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, IonicModule, ModalController, ToastController } from '@ionic/angular';
 import { FoodDetailsModal } from './food-details-modal/food-details.modal';
-import { FoodCreateModal } from './food-create-modal/food-create.modal';
 import {
-  FOOD_KEY,
   FoodActions,
   FoodDetailsStatusEnum,
   FoodItemBo,
   FoodListBase,
-  HttpStatusEnum,
   selectAllFoods,
   selectFoodDetails
 } from '@rawraw/app';
@@ -33,8 +30,8 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   private modalController = inject(ModalController);
   private toastController = inject(ToastController);
   protected store = inject(Store);
-  public foodListSelected$ = this.store.pipe(select(selectAllFoods));
   public foodDetailsSelected$ = this.store.pipe(select(selectFoodDetails));
+  protected foodListSelected$ = this.store.pipe(select(selectAllFoods));
 
   ngOnInit(): void {
     this.foodListSubscription();
@@ -71,7 +68,7 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
     );
   }
 
-  async presentAlertDeleteFood(foodId: string) {
+  protected async presentAlertDeleteFood(foodId: string) {
     const alert = await this.alertController
       .create({
         header: 'Delete Item',
@@ -91,25 +88,28 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
+  protected async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
+    this.isEditMode = true;
     const modal = await this.modalController
       .create({
         component: FoodDetailsModal,
         componentProps: {
-          food: foodItemBo
+          food: foodItemBo,
+          isEditMode: this?.isEditMode
         }
       });
     await modal.present();
   }
 
-  async presentAddFoodModal() {
+  protected async presentAddFoodModal() {
+    this.isEditMode = false;
     const modal = await this.modalController
       .create({
-        component: FoodCreateModal
+        component: FoodDetailsModal,
+        componentProps: {
+          isEditMode: this?.isEditMode
+        }
       });
     await modal.present();
   }
-
-  protected readonly HttpStatusEnum = HttpStatusEnum;
-  protected readonly FOOD_KEY = FOOD_KEY;
 }
