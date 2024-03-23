@@ -1,9 +1,7 @@
-import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, ToastController } from "@ionic/angular";
-import { FormControl, FormGroup } from "@angular/forms";
-import { FoodActions, FoodDetailsStatusEnum, FoodItemBo, selectFoodDetails } from "@rawraw/app";
-import { Subscription } from "rxjs";
-import { select, Store } from "@ngrx/store";
+import { FormControl } from "@angular/forms";
+import { FOOD_DETAILS_KEY, FoodActions, FoodDetailsBase, FoodDetailsStatusEnum, FoodItemBo } from "@rawraw/app";
 
 interface FoodForUpdateFormGroupInterface {
   label: FormControl<string>;
@@ -15,23 +13,15 @@ interface FoodForUpdateFormGroupInterface {
   styleUrls: ['./food-details.modal.scss'],
 })
 
-export class FoodDetailsModal implements OnInit, OnDestroy {
+export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestroy {
   @Input() food: FoodItemBo;
-  public foodDetailsForm: FormGroup;
-  private subscription$ = new Subscription();
-  protected store = inject(Store);
-  public foodDetailsSelected$ = this.store.pipe(select(selectFoodDetails));
 
   constructor(private modalController: ModalController,
               private toastController: ToastController) {
-    this.foodDetailsForm = new FormGroup<FoodForUpdateFormGroupInterface>({
-        label: new FormControl(''),
-        description: new FormControl('')
-      }
-    );
+    super();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.foodSelectorSubscription();
     this.store.dispatch(FoodActions.loadFoodDetails({
         foodId: this.food.id,
@@ -39,23 +29,32 @@ export class FoodDetailsModal implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
 
-  async dismissModal() {
+  protected async dismissModal() {
     return this.modalController.dismiss(null, 'cancel');
   }
 
-  private foodSelectorSubscription() {
+  protected dispatchUpdateFood() {
+    this.store.dispatch(FoodActions.updateFood({
+          foodId: this.food.id,
+          foodFormDetailsValue: this.foodDetailsForm.value
+        }
+      )
+    );
+  }
+
+  protected foodSelectorSubscription() {
     this.subscription$.add(
       this.foodDetailsSelected$.subscribe({
           next: async (foodDetailsState) => {
             if (foodDetailsState.status === FoodDetailsStatusEnum.loadSuccess) {
               this.foodDetailsForm.patchValue({
-                label: this.food.label,
-                description: this.food.description
-              });
+                label: foodDetailsState[FOOD_DETAILS_KEY].label,
+                description: foodDetailsState[FOOD_DETAILS_KEY].description
+              })
             }
             if (foodDetailsState.status === FoodDetailsStatusEnum.updateSuccess) {
               const toast = await this.toastController
@@ -77,15 +76,6 @@ export class FoodDetailsModal implements OnInit, OnDestroy {
               await toast.present();
             }
           }
-        }
-      )
-    );
-  }
-
-  public dispatchUpdateFood() {
-    this.store.dispatch(FoodActions.updateFood({
-          foodId: this.food.id,
-          foodFormDetailsValue: this.foodDetailsForm.value
         }
       )
     );
