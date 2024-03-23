@@ -7,7 +7,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
-import { FoodCreateDialog } from "./food-list/food-create-dialog/food-create-dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -32,7 +31,7 @@ import { IonicRouteStrategy } from "@ionic/angular";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
-  declarations: [AppComponent, FoodCreateDialog, FoodDetailsDialog, FoodDeleteAlertDialog],
+  declarations: [AppComponent, FoodDetailsDialog, FoodDeleteAlertDialog],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
