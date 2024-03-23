@@ -2,7 +2,7 @@ import { Subscription } from "rxjs";
 import { FormControl, FormGroup } from "@angular/forms";
 import { select, Store } from "@ngrx/store";
 import { selectFoodDetails } from "@rawraw/app";
-import { inject, OnDestroy, OnInit } from "@angular/core";
+import { inject } from "@angular/core";
 
 interface FoodFormGroupInterface {
   label: FormControl<string>;
@@ -23,12 +23,9 @@ export abstract class FoodDetailsBase {
     );
   }
 
+  protected abstract dismissModal(): Promise<void> | Promise<boolean>;
 
-  protected abstract dismissDialog(): Promise<void>;
-
-  protected abstract dismissModal(): Promise<boolean>;
-
-  protected abstract dispatchUpdateFood(): Promise<void>;
+  protected abstract dispatchUpdateFood(): Promise<void> | void;
 
   protected abstract foodSelectorSubscription(): void;
 }
