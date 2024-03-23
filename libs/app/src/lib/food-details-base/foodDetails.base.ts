@@ -1,7 +1,7 @@
 import { Subscription } from "rxjs";
 import { FormControl, FormGroup } from "@angular/forms";
 import { select, Store } from "@ngrx/store";
-import { selectFoodDetails } from "../states/foods/food.selector";
+import { selectFoodDetails } from "@rawraw/app";
 import { inject, OnDestroy, OnInit } from "@angular/core";
 
 interface FoodFormGroupInterface {
