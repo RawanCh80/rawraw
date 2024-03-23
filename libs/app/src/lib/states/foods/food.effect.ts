@@ -20,7 +20,11 @@ export class FoodEffect {
               )
               .pipe(
                 switchMap((food: FoodItemBo) => {
-                  return [FoodActions.createFoodSuccess(), FoodActions.loadFoods()];
+                  return [
+                    FoodActions.createFoodSuccess(),
+                    FoodActions.loadFoods(),
+                    FoodActions.resetFoodDetailsStatus()
+                  ];
                 }),
                 catchError((error) => {
                     return of(FoodActions.createFoodFailure({errorMessage: 'Fail to load Food Details'}))
@@ -80,7 +84,11 @@ export class FoodEffect {
               .updateFood(action.foodId, action.foodFormDetailsValue)
               .pipe(
                 switchMap((food: FoodItemBo) => {
-                  return [FoodActions.updateFoodSuccess(), FoodActions.loadFoods()]
+                  return [
+                    FoodActions.updateFoodSuccess()
+                    , FoodActions.loadFoods()
+                    , FoodActions.resetFoodDetailsStatus()
+                  ];
                 }),
                 catchError((error) => {
                     return of(FoodActions.deleteFoodFailure({errorMessage: 'Fail to update Food'}))
@@ -101,7 +109,11 @@ export class FoodEffect {
               .deleteFood(action.foodId)
               .pipe(
                 switchMap((food: FoodItemBo) => {
-                  return [FoodActions.deleteFoodSuccess(), FoodActions.loadFoods()];
+                  return [
+                    FoodActions.deleteFoodSuccess()
+                    , FoodActions.loadFoods()
+                    , FoodActions.resetFoodDetailsStatus()
+                  ];
                 }),
                 catchError((error) => {
                     return of(FoodActions.deleteFoodFailure({errorMessage: 'Fail to delete Food'}))
