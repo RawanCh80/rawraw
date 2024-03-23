@@ -29,6 +29,7 @@ import {
 import { StoreModule } from "@ngrx/store";
 import { RouteReuseStrategy } from "@angular/router";
 import { IonicRouteStrategy } from "@ionic/angular";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [AppComponent, FoodCreateDialog, FoodDetailsDialog, FoodDeleteAlertDialog],
@@ -47,7 +48,6 @@ import { IonicRouteStrategy } from "@ionic/angular";
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    EffectsModule.forRoot([]),
     StoreModule.forRoot({
       [FOOD_KEY]: foodReducers,
       [FOOD_DETAILS_KEY]: foodDetailsReducers
@@ -57,10 +57,12 @@ import { IonicRouteStrategy } from "@ionic/angular";
         strictActionImmutability: true,
         strictStateImmutability: true
       }
-    })
-    // StoreModule.forRoot({[FOOD_KEY]: foodReducers}),
-    // StoreModule.forRoot({[FOOD_DETAILS_KEY]: foodDetailsReducers}),
-    // EffectsModule.forFeature([FoodEffect]),
+    }),
+    StoreDevtoolsModule.instrument({
+      name: 'RawRawFoodWeb',
+      maxAge: 25
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [{
     provide: MAT_DIALOG_DEFAULT_OPTIONS,

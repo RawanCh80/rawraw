@@ -9,10 +9,16 @@ import { FoodDetailsModal } from './food-list/food-details-modal/food-details.mo
 import { ReactiveFormsModule } from '@angular/forms';
 import { FoodCreateModal } from './food-list/food-create-modal/food-create.modal';
 import { StoreModule } from '@ngrx/store';
-import { FOOD_KEY, FoodEffect, foodReducers, provideBootstrapEffects } from '@rawraw/app';
+import {
+  FOOD_DETAILS_KEY,
+  FOOD_KEY,
+  foodDetailsReducers,
+  FoodEffect,
+  foodReducers,
+  provideBootstrapEffects
+} from '@rawraw/app';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { FOOD_DETAILS_KEY, foodDetailsReducers } from "@rawraw/app";
 
 @NgModule({
   declarations: [AppComponent, FoodDetailsModal, FoodCreateModal],
@@ -22,11 +28,6 @@ import { FOOD_DETAILS_KEY, foodDetailsReducers } from "@rawraw/app";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreDevtoolsModule.instrument({
-      name: 'RawRawFood',
-      maxAge: 25
-    }),
-    EffectsModule.forRoot([]),
     StoreModule.forRoot({
         [FOOD_KEY]: foodReducers,
         [FOOD_DETAILS_KEY]: foodDetailsReducers
@@ -37,7 +38,12 @@ import { FOOD_DETAILS_KEY, foodDetailsReducers } from "@rawraw/app";
           strictActionImmutability: true,
           strictStateImmutability: true
         }
-      })
+      }),
+    StoreDevtoolsModule.instrument({
+      name: 'RawRawFoodMobile',
+      maxAge: 25
+    }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     provideBootstrapEffects([FoodEffect]),
