@@ -1,6 +1,11 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from "@angular/forms";
-import { FOOD_DETAILS_KEY, FoodActions, FoodDetailsBase, FoodDetailsStatusEnum } from "@rawraw/app";
+import {
+  FOOD_DETAILS_KEY,
+  FoodActions,
+  FoodDetailsBase,
+  FoodDetailsStatusEnum,
+  FoodForCreationInterface
+} from "@rawraw/app";
 import { MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -9,21 +14,23 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ['./food-details-dialog.scss'],
 })
 export class FoodDetailsDialog extends FoodDetailsBase implements OnInit, OnDestroy {
-  public foodDetailsForm: FormGroup;
 
   constructor(
     public matDialog: MatDialog,
     private matSnackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: { foodId: string }) {
+    @Inject(MAT_DIALOG_DATA) public data: { foodId: string, isEditMode?: boolean }) {
     super();
+    this.editMode = this.data?.isEditMode ?? true;
   }
 
   public ngOnInit(): void {
     this.foodSelectorSubscription();
-    this.store.dispatch(FoodActions.loadFoodDetails({
-        foodId: this.data.foodId
-      })
-    );
+    if (this.data?.isEditMode) {
+      this.store.dispatch(FoodActions.loadFoodDetails({
+          foodId: this.data?.foodId
+        })
+      );
+    }
   }
 
   public ngOnDestroy(): void {
@@ -31,6 +38,7 @@ export class FoodDetailsDialog extends FoodDetailsBase implements OnInit, OnDest
   }
 
   protected async dismissModal() {
+    this.store.dispatch(FoodActions.resetFoodDetailsStatus());
     return this.matDialog.closeAll();
   }
 
@@ -39,6 +47,11 @@ export class FoodDetailsDialog extends FoodDetailsBase implements OnInit, OnDest
       foodId: this.data.foodId,
       foodFormDetailsValue: this.foodDetailsForm.value
     }));
+  }
+
+  protected async dispatchCreateFood() {
+    const foodFormValue = this.foodDetailsForm.value as FoodForCreationInterface;
+    this.store.dispatch(FoodActions.createFood({food: foodFormValue}))
   }
 
   protected foodSelectorSubscription() {
@@ -61,6 +74,18 @@ export class FoodDetailsDialog extends FoodDetailsBase implements OnInit, OnDest
           }
           if (foodDetailsState.status === FoodDetailsStatusEnum.updateError) {
             this.matSnackBar.open('food cannot be updated');
+          }
+          if (foodDetailsState.status === FoodDetailsStatusEnum.createSuccess) {
+
+            this.matSnackBar.open('food created successfully',
+              'Close', {
+                duration: 3000
+              }
+            );
+            await this.dismissModal();
+          }
+          if (foodDetailsState.status === FoodDetailsStatusEnum.createError) {
+            this.matSnackBar.open('food cannot be created');
           }
         }
       })
