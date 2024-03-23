@@ -1,15 +1,14 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FOOD_KEY, FoodActions, FoodItemBo, FoodListBase, HttpStatusEnum, selectAllFoods } from '@rawraw/app';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { FoodActions, FoodItemBo, FoodListBase, selectAllFoods } from '@rawraw/app';
 import { MatDialog } from '@angular/material/dialog';
-import { FoodCreateDialog } from './food-create-dialog/food-create-dialog';
 import { FoodDetailsDialog } from './food-details-dialog/food-details-dialog';
 import { FoodDeleteAlertDialog } from './food-delete-alert-dialog/food-delete-alert-dialog';
 import { lastValueFrom } from 'rxjs';
-import { select, Store } from "@ngrx/store";
 import { LetDirective } from "@ngrx/component";
 import { MatButton } from "@angular/material/button";
 import { CommonModule } from '@angular/common';
 import { IonicModule } from "@ionic/angular";
+import { select, Store } from "@ngrx/store";
 
 @Component({
   templateUrl: 'food-list.page.html',
@@ -22,13 +21,11 @@ import { IonicModule } from "@ionic/angular";
   ],
   standalone: true
 })
-export class FoodListPage extends FoodListBase implements OnInit, OnDestroy,AfterViewInit {
+export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
+  protected store = inject(Store);
+  protected foodListSelected$ = this.store.pipe(select(selectAllFoods));
 
-  public foodListSelected$ = this.store.pipe(select(selectAllFoods));
-
-  constructor(
-    private store: Store,
-    private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog) {
     super();
   }
 
@@ -39,10 +36,8 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy,Afte
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
-ngAfterViewInit(){
 
-}
-  public async presentAlertDeleteFoodDialog(foodId: string) {
+  protected async presentAlertDeleteFood(foodId: string) {
     const dialogRef = this.matDialog
       .open(FoodDeleteAlertDialog,
         {
@@ -56,9 +51,13 @@ ngAfterViewInit(){
     await lastValueFrom(dialogRef.afterClosed());
   }
 
-  public async presentAddFoodDialog() {
+  protected async presentAddFoodModal() {
+    this.isEditMode = false;
     const dialogRef = this.matDialog
-      .open(FoodCreateDialog, {
+      .open(FoodDetailsDialog, {
+        data: {
+          isEditMode: this?.isEditMode
+        },
         height: '400px',
         width: '500px',
         hasBackdrop: true
@@ -66,12 +65,14 @@ ngAfterViewInit(){
     await lastValueFrom(dialogRef.afterClosed());
   }
 
-  public async presentFoodDetailsDialog(foodItemBo: FoodItemBo) {
+  protected async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
+    this.isEditMode = true;
     const dialogRef = this.matDialog
       .open(FoodDetailsDialog,
         {
           data: {
-            foodId: foodItemBo.id
+            foodId: foodItemBo.id,
+            isEditMode: this?.isEditMode
           },
           height: '500px',
           width: '500px',
@@ -79,7 +80,4 @@ ngAfterViewInit(){
         });
     await lastValueFrom(dialogRef.afterClosed());
   }
-
-  protected readonly FOOD_KEY = FOOD_KEY;
-  protected readonly HttpStatusEnum = HttpStatusEnum;
 }
