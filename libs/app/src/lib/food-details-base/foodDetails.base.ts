@@ -14,6 +14,7 @@ export abstract class FoodDetailsBase {
   protected subscription$ = new Subscription();
   protected foodDetailsSelected$ = this.store.pipe(select(selectFoodDetails));
   protected foodDetailsForm: FormGroup;
+  protected editMode: boolean;
 
   protected constructor() {
     this.foodDetailsForm = new FormGroup<FoodFormGroupInterface>({
@@ -25,7 +26,9 @@ export abstract class FoodDetailsBase {
 
   protected abstract dismissModal(): Promise<void> | Promise<boolean>;
 
-  protected abstract dispatchUpdateFood(): Promise<void> | void;
+  // protected abstract dispatchUpdateFood(): Promise<void> | void;
+
+  // protected abstract  dispatchCreateFood(): Promise<void>;
 
   protected abstract foodSelectorSubscription(): void;
 }
