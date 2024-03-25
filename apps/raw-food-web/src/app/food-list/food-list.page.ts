@@ -1,8 +1,8 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FoodActions, FoodItemBo, FoodListBase, selectAllFoods } from '@rawraw/app';
 import { MatDialog } from '@angular/material/dialog';
-import { FoodDetailsDialog } from './food-details-dialog/food-details-dialog';
-import { FoodDeleteAlertDialog } from './food-delete-alert-dialog/food-delete-alert-dialog';
+import { FoodDetailsDialog } from './food-details-dialog/food-details.dialog';
+import { FoodDeleteAlertDialog } from './food-delete-alert-dialog/food-delete-alert.dialog';
 import { lastValueFrom } from 'rxjs';
 import { LetDirective } from "@ngrx/component";
 import { MatButton } from "@angular/material/button";
@@ -52,12 +52,8 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   }
 
   protected async presentAddFoodModal() {
-    this.isEditMode = false;
     const dialogRef = this.matDialog
       .open(FoodDetailsDialog, {
-        data: {
-          isEditMode: this?.isEditMode
-        },
         height: '400px',
         width: '500px',
         hasBackdrop: true
@@ -66,13 +62,11 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   }
 
   protected async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
-    this.isEditMode = true;
     const dialogRef = this.matDialog
       .open(FoodDetailsDialog,
         {
           data: {
-            foodId: foodItemBo.id,
-            isEditMode: this?.isEditMode
+            foodId: foodItemBo.id
           },
           height: '500px',
           width: '500px',
