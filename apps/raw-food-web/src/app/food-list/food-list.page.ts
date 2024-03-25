@@ -1,5 +1,5 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { FoodActions, FoodItemBo, FoodListBase, selectAllFoods } from '@rawraw/app';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FoodActions, FoodItemBo, FoodListBase } from '@rawraw/app';
 import { MatDialog } from '@angular/material/dialog';
 import { FoodDetailsDialog } from './food-details-dialog/food-details.dialog';
 import { FoodDeleteAlertDialog } from './food-delete-alert-dialog/food-delete-alert.dialog';
@@ -8,7 +8,6 @@ import { LetDirective } from "@ngrx/component";
 import { MatButton } from "@angular/material/button";
 import { CommonModule } from '@angular/common';
 import { IonicModule } from "@ionic/angular";
-import { select, Store } from "@ngrx/store";
 
 @Component({
   templateUrl: 'food-list.page.html',
@@ -22,8 +21,6 @@ import { select, Store } from "@ngrx/store";
   standalone: true
 })
 export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
-  protected store = inject(Store);
-  protected foodListSelected$ = this.store.pipe(select(selectAllFoods));
 
   constructor(private matDialog: MatDialog) {
     super();

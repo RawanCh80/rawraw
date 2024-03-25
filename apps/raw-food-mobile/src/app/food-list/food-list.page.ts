@@ -1,18 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, IonicModule, ModalController, ToastController } from '@ionic/angular';
 import { FoodDetailsModal } from './food-details-modal/food-details.modal';
-import {
-  FoodActions,
-  FoodDetailsStatusEnum,
-  FoodItemBo,
-  FoodListBase,
-  selectAllFoods,
-  selectFoodDetails
-} from '@rawraw/app';
+import { FoodActions, FoodDetailsStatusEnum, FoodItemBo, FoodListBase, selectFoodDetails } from '@rawraw/app';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LetDirective } from '@ngrx/component';
-import { select, Store } from '@ngrx/store';
+import { select } from '@ngrx/store';
 
 @Component({
   standalone: true,
@@ -29,9 +22,8 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   private alertController = inject(AlertController);
   private modalController = inject(ModalController);
   private toastController = inject(ToastController);
-  protected store = inject(Store);
   public foodDetailsSelected$ = this.store.pipe(select(selectFoodDetails));
-  protected foodListSelected$ = this.store.pipe(select(selectAllFoods));
+
 
   ngOnInit(): void {
     this.foodListSubscription();
@@ -88,21 +80,24 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  protected async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
-    const modal = await this.modalController
-      .create({
-        component: FoodDetailsModal,
-        componentProps: {
-          data: {foodId: foodItemBo.id}
-        }
-      });
-    await modal.present();
-  }
 
   protected async presentAddFoodModal() {
     const modal = await this.modalController
       .create({
         component: FoodDetailsModal,
+      });
+    await modal.present();
+  }
+
+  protected async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
+    const modal = await this.modalController
+      .create({
+        component: FoodDetailsModal,
+        componentProps: {
+          data: {
+            foodId: foodItemBo.id
+          }
+        }
       });
     await modal.present();
   }
