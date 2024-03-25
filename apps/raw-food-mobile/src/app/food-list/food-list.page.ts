@@ -89,26 +89,20 @@ export class FoodListPage extends FoodListBase implements OnInit, OnDestroy {
   }
 
   protected async presentFoodDetailsModal(foodItemBo: FoodItemBo) {
-    this.isEditMode = true;
     const modal = await this.modalController
       .create({
         component: FoodDetailsModal,
         componentProps: {
-          food: foodItemBo,
-          isEditMode: this?.isEditMode
+          data: {foodId: foodItemBo.id}
         }
       });
     await modal.present();
   }
 
   protected async presentAddFoodModal() {
-    this.isEditMode = false;
     const modal = await this.modalController
       .create({
         component: FoodDetailsModal,
-        componentProps: {
-          isEditMode: this?.isEditMode
-        }
       });
     await modal.present();
   }
