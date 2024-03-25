@@ -6,8 +6,8 @@ import { select, Store } from "@ngrx/store";
 import { FoodActions, FoodDetailsStatusEnum, selectFoodDetails } from "@rawraw/app";
 
 @Component({
-  templateUrl: './food-delete-alert-dialog.html',
-  styleUrl: './food-delete-alert-dialog.scss',
+  templateUrl: './food-delete-alert.dialog.html',
+  styleUrl: './food-delete-alert.dialog.scss',
 })
 export class FoodDeleteAlertDialog implements OnInit, OnDestroy {
 
