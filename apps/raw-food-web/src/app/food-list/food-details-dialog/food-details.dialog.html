@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header *ngIf="data?.isEditMode">
+  <mat-card-header *ngIf="this?.isEditMode">
     <mat-toolbar>
       <button mat-raised-button (click)="dismissModal()"
               color="basic">
@@ -11,7 +11,7 @@
       </button>
     </mat-toolbar>
   </mat-card-header>
-  <mat-card-header *ngIf="!data?.isEditMode">
+  <mat-card-header *ngIf="!this?.isEditMode">
     <mat-toolbar>
       <button mat-raised-button (click)="dismissModal()"
               color="basic">
