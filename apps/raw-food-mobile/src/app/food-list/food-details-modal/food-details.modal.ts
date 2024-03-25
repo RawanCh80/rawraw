@@ -19,7 +19,6 @@ export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestr
   public ngOnInit(): void {
     this.foodId = this.data?.foodId;
     this.loadPage();
-    this.foodSelectorSubscription();
   }
 
   public ngOnDestroy(): void {

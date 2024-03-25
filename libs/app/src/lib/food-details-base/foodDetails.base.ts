@@ -32,6 +32,7 @@ export abstract class FoodDetailsBase {
   }
 
   protected loadPage() {
+    this.foodSelectorSubscription();
     this.isEditMode = !!this.foodId;
     if (this.isEditMode) {
       this.store.dispatch(FoodActions.loadFoodDetails({

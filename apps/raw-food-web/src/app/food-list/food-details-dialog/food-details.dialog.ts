@@ -19,7 +19,6 @@ export class FoodDetailsDialog extends FoodDetailsBase implements OnInit, OnDest
   public ngOnInit(): void {
     this.foodId = this.data?.foodId;
     this.loadPage();
-    this.foodSelectorSubscription();
   }
 
   public ngOnDestroy(): void {
