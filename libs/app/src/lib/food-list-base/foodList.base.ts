@@ -2,7 +2,6 @@ import { Subscription } from 'rxjs';
 import { FOOD_KEY, FoodItemBo, HttpStatusEnum } from '@rawraw/app';
 
 export abstract class FoodListBase {
-  protected isEditMode = false;
   protected subscription$ = new Subscription();
 
   constructor() {
