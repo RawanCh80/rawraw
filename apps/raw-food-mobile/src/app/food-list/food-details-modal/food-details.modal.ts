@@ -1,20 +1,24 @@
 import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { ModalController, ToastController } from "@ionic/angular";
+import { IonicModule, ModalController, ToastController } from '@ionic/angular';
 import { FoodActions, FoodDetailsBase } from "@rawraw/app";
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
+  standalone: true,
   templateUrl: './food-details.modal.html',
   styleUrls: ['./food-details.modal.scss'],
+  imports: [
+    CommonModule,
+    IonicModule,
+    ReactiveFormsModule
+  ]
 })
 
 export class FoodDetailsModal extends FoodDetailsBase implements OnInit, OnDestroy {
   @Input() data: { foodId: string };
   private modalController = inject(ModalController);
   private toastController = inject(ToastController);
-
-  constructor() {
-    super();
-  }
 
   public ngOnInit(): void {
     this.foodId = this.data?.foodId;

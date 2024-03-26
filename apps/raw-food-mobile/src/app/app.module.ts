@@ -21,7 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { MatCard } from "@angular/material/card";
 
 @NgModule({
-  declarations: [AppComponent, FoodDetailsModal],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
